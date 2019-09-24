@@ -1,0 +1,39 @@
+ .h-l-1px {
+   position: relative;
+
+   &:before {
+     @include h-1px(#eee, left)
+   }
+ }
+
+ .h-r-1px {
+   position: relative;
+
+   &:before {
+     @include h-1px(#eee, right)
+   }
+ }
+
+ .h-t-1px {
+   position: relative;
+
+   &:before {
+     @include h-1px(#eee, top)
+   }
+ }
+
+ .h-b-1px {
+   position: relative;
+
+   &:before {
+     @include h-1px(#eee, bottom)
+   }
+ }
+
+ .h-1px {
+   position: relative;
+
+   &:before {
+     @include h-all-1px(#eee, 0)
+   }
+ }

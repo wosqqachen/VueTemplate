@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>v</title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but v doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, width=device-width, viewport-fit=cover" />
+		<link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+		<title>template</title>
+	</head>
+	<body class="ignore-body">
+		<div id="app"></div>
+		<!-- built files will be auto injected -->
+	</body>
+	<script>
+		var standalone = window.navigator.standalone,
+			userAgent = window.navigator.userAgent.toLowerCase(),
+			ios = /iphone|ipod|ipad/.test(userAgent);
+
+		if ((/terminal=4/.test(window.location.href) || (ios && standalone)) && !/iphoneX=1/.test(window.location.href)) {
+			document.querySelector('body').className += 'platform-ios';
+		}
+		if (/iphoneX=1/.test(window.location.href)) {
+			document.querySelector('body').className += 'platform-iphonex';
+		}
+	</script>
 </html>

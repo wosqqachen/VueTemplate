@@ -1,0 +1,15 @@
+.h-arrow-l {
+  @include arrow(10px, #000, right)
+}
+
+.h-arrow-r {
+  @include arrow(10px, #000)
+}
+
+.h-arrow-t {
+  @include arrow(10px, #000, bottom)
+}
+
+.h-arrow-b {
+  @include arrow(10px, #000, top)
+}
