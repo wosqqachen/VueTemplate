@@ -13,6 +13,12 @@
 		<div class="h-arrow-b">1</div>
 	</div>
 </template>
+<script>
+// test test test
+debugger;
+console.log('nihao');
+</script>
+
 <style lang="scss" scoped>
 h1 {
   margin: 10px 10px 10px;
