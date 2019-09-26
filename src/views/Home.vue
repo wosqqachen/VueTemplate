@@ -10,10 +10,14 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue';
+import Const from '@/utils/Const';
 export default {
 	name : 'home',
 	components : {
 		HelloWorld
+	},
+	created () {
+		console.log(Const.USER_INFO);
 	}
 };
 </script>
