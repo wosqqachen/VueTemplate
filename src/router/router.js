@@ -1,10 +1,15 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import NProgress from 'nprogress';
+
 import Home from './../views/Home.vue';
+
+NProgress.inc(0.2);
+NProgress.configure({ easing : 'ease', speed : 500, showSpinner : false });
 
 Vue.use(Router);
 
-export default new Router({
+let router = new Router({
 	mode : 'history',
 	base : process.env.BASE_URL,
 	routes : [
@@ -24,3 +29,13 @@ export default new Router({
 		}
 	]
 });
+router.beforeEach((to, from, next) => {
+	NProgress.start();
+	next();
+});
+
+router.afterEach(() => {
+	NProgress.done();
+});
+
+export default router;

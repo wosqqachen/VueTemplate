@@ -1,10 +1,9 @@
 import Vue from 'vue';
 import App from './App.vue';
-
 import router from './router/router';
 import store from './store';
 import './registerServiceWorker';
-
+import 'nprogress/nprogress.css';
 import { Button } from 'mint-ui';
 import globalDirective from './plugins/globalDirective';
 
