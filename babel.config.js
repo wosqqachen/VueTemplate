@@ -6,5 +6,14 @@ module.exports = {
 				useBuiltIns : 'entry' // polyfill
 			}
 		]
+	],
+	plugins : [
+		[
+			'component',
+			{
+				'libraryName' : 'mint-ui',
+				'style' : true
+			}
+		]
 	]
 };
