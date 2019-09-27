@@ -6,10 +6,15 @@ import './registerServiceWorker';
 import 'nprogress/nprogress.css';
 import { Button } from 'mint-ui';
 import globalDirective from './plugins/globalDirective';
+import Storage from './utils/Storage';
 
 Vue.component(Button.name, Button);
 
 Vue.config.productionTip = false;
+
+Vue.prototype.Storage = Storage;
+
+window.Storage = Storage;
 
 Vue.use(globalDirective);
 
