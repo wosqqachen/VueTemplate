@@ -34,6 +34,8 @@ export default {
 		})
 	},
 	created () {
+		this.$api.login({ name : 'hl', passwrod : '000000' });
+		this.$api.userInfo({ name : 'hl' });
 		console.log(this.user);
 	},
 	methods : {
