@@ -14,9 +14,7 @@
 	</div>
 </template>
 <script>
-// test test test
-debugger;
-console.log('nihao');
+
 </script>
 
 <style lang="scss" scoped>

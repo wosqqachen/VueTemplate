@@ -7,6 +7,12 @@
 		           @click="userAc">userAc</mt-button>
 		<mt-button type="primary"
 		           @click="userMt">userMt</mt-button>
+		<input type="text"
+		       placeholder="输入"
+		       @input="throttleTest">
+		<input type="text"
+		       placeholder="输入"
+		       @input="debounceTest">
 		<HelloWorld msg="Welcome to Your Vue.js App" />
 	</div>
 </template>
@@ -14,6 +20,7 @@
 <script>
 import { mapMutations, mapGetters, mapActions } from 'vuex';
 import Const from '@/utils/Const';
+import Tools from '@/utils/Tools';
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue';
 export default {
@@ -41,7 +48,13 @@ export default {
 		},
 		userMt () {
 			this.setUser({ username : 'list' });
-		}
+		},
+		throttleTest : Tools.throttle(() => {
+			console.log('test');
+		}, 3000),
+		debounceTest : Tools.debounce(() => {
+			console.log('test');
+		}, 3000)
 	}
 };
 </script>
