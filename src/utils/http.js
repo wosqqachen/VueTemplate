@@ -41,7 +41,6 @@ axios.interceptors.response.use(
 			loadingCount = 0;
 			Indicator.close();
 		}
-		Indicator.close();
 		Toast({
 			message : '服务器异常!!!',
 			duration : 3000
