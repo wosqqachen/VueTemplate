@@ -2,30 +2,61 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import NProgress from 'nprogress';
 
-import Home from './../views/Home.vue';
+const TabBarLayout = () => import(/* webpackChunkName:'tabBarLayout' */ '@/views/TabBarLayout');
+const TakeOut = () => import(/* webpackChunkName:'takeOut' */ '@/views/TakeOut');
+const Found = () => import(/* webpackChunkName:'found' */ '@/views/Found');
+const Mine = () => import(/* webpackChunkName:'mine' */ '@/views/Mine');
+const Login = () => import(/* webpackChunkName:'Login' */ '@/views/Login');
 
 NProgress.inc(0.2);
 NProgress.configure({ easing : 'ease', speed : 500, showSpinner : false });
 
+Router.prototype.go = function (step = -1) {
+	this.isRouterBack = true;
+	window.history.go(step);
+};
+Router.prototype.replace = function (e) {
+	let path = e[0] === '/' ? e : `/${e}`;
+	this.isRouterBack = true;
+	window.location.replace(`#${path}`);
+	window.history.replaceState(null, null, `#${path}`);
+};
+
 Vue.use(Router);
 
 let router = new Router({
-	mode : 'history',
 	base : process.env.BASE_URL,
 	routes : [
 		{
 			path : '/',
-			name : 'home',
-			component : Home
+			name : 'TabBarLayout',
+			component : TabBarLayout,
+			children : [
+				{
+					path : 'takeOut',
+					name : 'TakeOut',
+					component : TakeOut
+				},
+				{
+					path : 'found',
+					name : 'Found',
+					component : Found
+				},
+				{
+					path : 'mine',
+					name : 'Mine',
+					component : Mine
+				}
+			]
 		},
 		{
-			path : '/about',
-			name : 'about',
-			// route level code-splitting
-			// this generates a separate chunk (about.[hash].js) for this route
-			// which is lazy-loaded when the route is visited.
-			component : () =>
-				import(/* webpackChunkName: "about" */ './../views/About.vue')
+			path : '/login',
+			name : 'Login',
+			component : Login
+		},
+		{
+			path : '*',
+			redirect : '/takeOut'
 		}
 	]
 });

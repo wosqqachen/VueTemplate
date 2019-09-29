@@ -5,12 +5,16 @@ import router from './router/router';
 import store from './store';
 import './registerServiceWorker';
 import 'nprogress/nprogress.css';
-import { Button } from 'mint-ui';
+import '@/assets/css/reset.scss';
+import { Button, Field } from 'mint-ui';
+
+
 import globalDirective from './plugins/globalDirective';
 import Storage from './utils/Storage';
 import api from './api';
 
 Vue.component(Button.name, Button);
+Vue.component(Field.name, Field);
 
 Vue.config.productionTip = false;
 
