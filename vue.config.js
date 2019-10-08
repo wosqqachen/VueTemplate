@@ -1,9 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
-const glob = require('glob-all');
-const PurgecssPlugin = require('purgecss-webpack-plugin');
 const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
 const resolve = dir => path.join(__dirname, dir);
 const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV);
@@ -41,6 +41,19 @@ module.exports = {
 	},
 	configureWebpack : config => {
 		config.resolve.extensions = ['.js', '.vue', '.scss', '.json'];
+		config.plugins.push(
+			new webpack.DllReferencePlugin({
+				context : process.cwd(),
+				manifest : resolve('dll/dll_manifest.json')
+			}),
+			new webpack.DllReferencePlugin({
+				context : process.cwd(),
+				manifest : resolve('dll/vue_manifest.json')
+			}),
+			new AddAssetHtmlPlugin({
+				filepath : resolve('dll/*.js')
+			})
+		);
 		if (IS_PROD) {
 			config.optimization = {
 				splitChunks : {
@@ -89,27 +102,6 @@ module.exports = {
 					threshold : 10240,
 					minRatio : 0.8
 				}),
-				// 去除多余css
-				new PurgecssPlugin({
-					paths : glob.sync([resolve('./**/*.vue')]),
-					extractors : [
-						{
-							extractor : class Extractor {
-								static extract (content) {
-									const validSection = content.replace(
-										/<style([\s\S]*?)<\/style>+/gim,
-										''
-									);
-									return validSection.match(/[A-Za-z0-9-_:/]+/g) || [];
-								}
-							},
-							extensions : ['html', 'vue']
-						}
-					],
-					whitelist : ['html', 'body'],
-					whitelistPatterns : [/el-.*/],
-					whitelistPatternsChildren : [/^token/, /^pre/, /^code/]
-				})
 			);
 		}
 	},
@@ -123,7 +115,8 @@ module.exports = {
 		if (process.env.IS_ANALYZ) {
 			config.plugin('webpack-report')
 				.use(BundleAnalyzerPlugin, [{
-					analyzerMode : 'static'
+					analyzerMode : 'server',
+					openAnalyzer : true
 				}]);
 		}
 		if (IS_PROD) {
