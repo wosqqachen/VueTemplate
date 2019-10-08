@@ -38,6 +38,15 @@ export default {
 
 		this.$api.userInfo({ name : 'hl' });
 		console.log(this.user);
+
+		this.$appInvoked('appGetAjaxHeader', {}, rst => {
+			console.log('调用原生', rst);
+		});
+
+		this.$appGetInvoked('htmlBackToFore', () => {
+			console.log('原生调用通知H5');
+
+		});
 	},
 	methods : {
 		...mapActions('User', {
