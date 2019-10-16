@@ -41,20 +41,20 @@ module.exports = {
 	},
 	configureWebpack : config => {
 		config.resolve.extensions = ['.js', '.vue', '.scss', '.json'];
-		config.plugins.push(
-			new webpack.DllReferencePlugin({
-				context : process.cwd(),
-				manifest : resolve('dll/dll_manifest.json')
-			}),
-			new webpack.DllReferencePlugin({
-				context : process.cwd(),
-				manifest : resolve('dll/vue_manifest.json')
-			}),
-			new AddAssetHtmlPlugin({
-				filepath : resolve('dll/*.js')
-			})
-		);
 		if (IS_PROD) {
+			config.plugins.push(
+				new webpack.DllReferencePlugin({
+					context : process.cwd(),
+					manifest : resolve('dll/dll_manifest.json')
+				}),
+				new webpack.DllReferencePlugin({
+					context : process.cwd(),
+					manifest : resolve('dll/vue_manifest.json')
+				}),
+				new AddAssetHtmlPlugin({
+					filepath : resolve('dll/*.js')
+				})
+			);
 			config.optimization = {
 				splitChunks : {
 					chunks : 'all',
