@@ -12,7 +12,7 @@ export default class Storage {
 	}
 
 	static set (key, value) {
-		if (Object.prototype.toString.call(value) === '[object Object]') {
+		if (value instanceof Object) {
 			value = JSON.stringify(value);
 		}
 		localStorage.setItem(key, value);
