@@ -1,16 +1,12 @@
 import CONST from '@/utils/Const';
+import Storage from '@/utils/Storage';
 export default {
 	namespaced : true,
 	state : {
-		user : {
-			username : 'hl'
-		}
+		user : Storage.get(CONST.USER_INFO) || {}
 	},
 	getters : {
 		user : (state) => {
-			if (Storage.isObjectEmpty(state.user)) {
-				state.user = Storage.get(CONST.USER_INFO) || {};
-			}
 			return state.user;
 		}
 	},
