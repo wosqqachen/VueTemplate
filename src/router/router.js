@@ -2,8 +2,10 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import NProgress from 'nprogress';
 
-const TabBarLayout = () => import(/* webpackChunkName:'tabBarLayout' */ '@/views/TabBarLayout');
-const TakeOut = () => import(/* webpackChunkName:'takeOut' */ '@/views/TakeOut');
+const TabBarLayout = () =>
+	import(/* webpackChunkName:'tabBarLayout' */ '@/views/TabBarLayout');
+const TakeOut = () =>
+	import(/* webpackChunkName:'takeOut' */ '@/views/TakeOut');
 const Found = () => import(/* webpackChunkName:'found' */ '@/views/Found');
 const Mine = () => import(/* webpackChunkName:'mine' */ '@/views/Mine');
 const Login = () => import(/* webpackChunkName:'Login' */ '@/views/Login');
@@ -15,11 +17,10 @@ Router.prototype.go = function (step = -1) {
 	this.isRouterBack = true;
 	window.history.go(step);
 };
-Router.prototype.replace = function (e) {
-	let path = e[0] === '/' ? e : `/${e}`;
+const replace = Router.prototype.replace;
+Router.prototype.replace = function () {
 	this.isRouterBack = true;
-	window.location.replace(`#${path}`);
-	window.history.replaceState(null, null, `#${path}`);
+	replace.apply(this, arguments);
 };
 
 Vue.use(Router);
