@@ -5,7 +5,7 @@ import router from './router/router';
 import store from './store';
 import './registerServiceWorker';
 import 'nprogress/nprogress.css';
-import '@/assets/css/reset.scss';
+import '@/assets/css/base.scss';
 import { Button, Field } from 'mint-ui';
 
 import globalDirective from './plugins/globalDirective';
