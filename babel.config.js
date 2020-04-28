@@ -3,7 +3,7 @@ module.exports = {
 		[
 			'@vue/app',
 			{
-				useBuiltIns : 'entry' // polyfill
+				useBuiltIns : 'usage' // polyfill按需引入
 			}
 		]
 	],
