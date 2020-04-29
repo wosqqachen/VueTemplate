@@ -17,6 +17,7 @@
 		"@babel/runtime": "^7.6.3",
 		"axios": "^0.19.0",
 		"core-js": "^2.6.5",
+		"mathjs": "^6.6.4",
 		"mint-ui": "^2.2.13",
 		"monitor-web-sdk": "^1.0.8",
 		"nprogress": "^0.2.0",
