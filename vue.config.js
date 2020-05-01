@@ -4,6 +4,8 @@ const TerserPlugin = require('terser-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const PurifyCSS = require('purifycss-webpack');
+const glob = require('glob-all');
 const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
 const resolve = dir => path.join(__dirname, dir);
 const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV);
@@ -94,6 +96,14 @@ module.exports = {
 				]
 			};
 			config.plugins.push(
+				// 清除⽆无⽤用 cssc
+				new PurifyCSS({
+					paths : glob.sync([
+						path.resolve(__dirname, './src/*.html'),
+						path.resolve(__dirname, './src/*.js'),
+						path.resolve(__dirname, './src/*.vue')
+					])
+				}),
 				//开启gzip压缩
 				new CompressionWebpackPlugin({
 					filename : '[path].gz[query]',
