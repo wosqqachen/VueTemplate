@@ -1,5 +1,9 @@
 import * as math from 'mathjs';
-
+/**
+ * 给input 复制不需要转换
+ * 非input 需要toNumber()
+ * 	如:(DigDecimal.add(1,2)).toNumber()
+ */
 export default class DigDecimal {
 	// 加
 	static add (numA, numB) {
