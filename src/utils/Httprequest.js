@@ -38,10 +38,10 @@ class Httprequest {
 				this.queue[unique] = unique;
 			}
 
-			// if (isLoading){
-			// 	this.loadingCount++;
-			// 	Indicator.open('加载中...');
-			// }
+			if (isLoading){
+				this.loadingCount++;
+				Indicator.open('加载中...');
+			}
 			if (isCancel) {
 				config.cancelToken = new axios.CancelToken((cancel) => {
 					store.commit('AxiosCancel/' + CONST.AXIOS_ENQUEUE, cancel);
