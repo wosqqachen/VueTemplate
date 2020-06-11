@@ -1,11 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import NProgress from 'nprogress';
-
-const TabBarLayout = () =>
-	import(/* webpackChunkName:'tabBarLayout' */ '@/views/TabBarLayout');
-const TakeOut = () =>
-	import(/* webpackChunkName:'takeOut' */ '@/views/TakeOut');
+import store from '@/store';
+import CONST from '@/utils/Const';
+const TabBarLayout = () => import(/* webpackChunkName:'tabBarLayout' */ '@/views/TabBarLayout');
+const TakeOut = () => import(/* webpackChunkName:'takeOut' */ '@/views/TakeOut');
 const Found = () => import(/* webpackChunkName:'found' */ '@/views/Found');
 const Mine = () => import(/* webpackChunkName:'mine' */ '@/views/Mine');
 const Login = () => import(/* webpackChunkName:'Login' */ '@/views/Login');
@@ -61,7 +60,9 @@ let router = new Router({
 		}
 	]
 });
+
 router.beforeEach((to, from, next) => {
+	store.commit('AxiosCancel/'+CONST.AXIOS_CLEAR_QUEUE);
 	NProgress.start();
 	next();
 });

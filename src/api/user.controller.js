@@ -1,4 +1,4 @@
-import http from '@/utils/http';
+import http from '@/utils/Httprequest';
 
 export default {
 	login (data) {
@@ -7,11 +7,11 @@ export default {
 			data
 		});
 	},
-	userInfo (data) {
+	userInfo (params) {
 		return http({
 			url : '/userInfo',
 			method : 'get',
-			data
+			params
 		});
 	}
 };
