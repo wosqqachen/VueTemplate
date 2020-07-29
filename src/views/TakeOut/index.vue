@@ -24,6 +24,7 @@
 import { mapMutations, mapGetters, mapActions } from 'vuex';
 import Const from '@/utils/Const';
 import Tools from '@/utils/Tools';
+import html2canvas from 'html2canvas'
 export default {
 	name : 'home',
 	computed : {
@@ -59,6 +60,17 @@ export default {
 			this.userAction({ username : 'zhangsan' });
 		},
 		userMt () {
+			html2canvas(document.body).then(function(canvas) {
+					let timestamp = Date.parse(new Date());
+					let aLink = document.createElement('a');
+					aLink.style.display = 'none';
+					aLink.href = canvas.toDataURL();
+					aLink.setAttribute('download', timestamp + '.png');
+					document.body.appendChild(aLink);
+					aLink.click();
+					document.body.removeChild(aLink);
+
+});
 			this.setUser({ username : 'list' });
 		},
 		throttleTest : Tools.throttle(() => {
