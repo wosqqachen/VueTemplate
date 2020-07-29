@@ -69,8 +69,7 @@ export default {
 					document.body.appendChild(aLink);
 					aLink.click();
 					document.body.removeChild(aLink);
-
-});
+			});
 			this.setUser({ username : 'list' });
 		},
 		throttleTest : Tools.throttle(() => {
