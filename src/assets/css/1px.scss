@@ -1,39 +1,33 @@
- .h-l-1px {
-   position: relative;
+.h-l-1px {
+  position: relative;
+  &:before {
+    @include h-1px($border-color, left);
+  }
+}
 
-   &:before {
-     @include h-1px(#eee, left)
-   }
- }
+.h-r-1px {
+  position: relative;
+  &:before {
+    @include h-1px($border-color, right);
+  }
+}
+.h-t-1px {
+  position: relative;
+  &:before {
+    @include h-1px($border-color, top);
+  }
+}
 
- .h-r-1px {
-   position: relative;
+.h-b-1px {
+  position: relative;
+  &:before {
+    @include h-1px($border-color, bottom);
+  }
+}
 
-   &:before {
-     @include h-1px(#eee, right)
-   }
- }
-
- .h-t-1px {
-   position: relative;
-
-   &:before {
-     @include h-1px(#eee, top)
-   }
- }
-
- .h-b-1px {
-   position: relative;
-
-   &:before {
-     @include h-1px(#eee, bottom)
-   }
- }
-
- .h-1px {
-   position: relative;
-
-   &:before {
-     @include h-all-1px(#eee, 0)
-   }
- }
+.h-1px {
+  position: relative;
+  &:before {
+    @include h-all-1px($border-color, 0);
+  }
+}

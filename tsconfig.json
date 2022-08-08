@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+		"target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+		"forceConsistentCasingInFileNames": true, // 强制区分大小写
+    "removeComments": true, // 去注释
+    "noImplicitAny": false, // 允许any类型
+    "experimentalDecorators": true, // 装饰器特性
+    "noUnusedLocals":true, // 未使用的本地变量将报错
+    "noUnusedParameters":false, // 未使用的参数将报错
+    "noLib": false, // 不引入默认库文件
+    "types": [
+      "webpack-env"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

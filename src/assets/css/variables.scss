@@ -1,36 +1,77 @@
-$theme-bg-color : #f7f8f9; //主背景色
-$theme-color: #ff8737; // 主题色
+$primary-color: #8a38f5; // 全局主色
+$success-color: #26701b; // 成功色
+$error-color: #ff0000; // 错误色
+$warning-color: #ed5c21; // 警告色
 
-// 按钮颜色
-$btn-bgColor: linear-gradient(90deg, #5d7edc 0%, #4c68b7 100%); // 按钮正常背景色
-$btn-active-bgColor: linear-gradient(90deg, #496bcd 0%, #3e5aa7 100%); // 按钮active 背景色
-$btn-disable-bgColor: #e5e5e5; // 按钮disable 背景色
-// 按钮文本颜色
-$btn-text-color: #ffffff; // 按钮默认文本颜色
-$btn-text-active-color: #ffffff; // 按钮active 文本颜色
-$btn-text-disable-color: #ffffff; // 按钮disable 文本颜色
+$text-main-color: #1a1a1a; // 主文本色
+$text-secondary-color: #8d8d8d; // 次文本色
+$text-link-color: #8a38f5; // 链接色
 
-// 提示语背景色
-$tip_bgColor: #fff3df;
-$tip_text_color: #ff9d00;
+$title-color: #1f1f1f; // 标题色
 
-// 进度条线的颜色
-$progress-line-color-default: #e5f6d3; // 默认
-$progress-line-color-active: #7ed321; // 已完成
-$progress-line-color-error: #f53332; // 失败
+// 背景色
+$bg-primary: #a261ff;
+$bg-default: #ffffff;
+$bg-secondary: #999999;
 
-// 文字
-$color-error: #ea3323; // 警告色
-$color-pass: #7ed321; // 通过色
+// 水平间距
+$h-spacing-sm: 38px;
+$h-spacing-md: 48px;
+$h-spacing-lg: 58px;
 
-$color-link: #4c68b7; // 链接色
-$color-primary: #ff8738; // 重点提醒
+// 垂直间距
+$v-spacing-sm: 20px;
+$v-spacing-md: 35px;
+$v-spacing-lg: 40px;
 
-$color-text-title: #333333; // 正文和标题
-$color-text-sub: #666666; // 次要文字
-$color-text-tip: #999999; // 辅助类文字
-$color-placeholder: #aaaaaa; //输入框提示文字
+// 字体尺寸
+$font-size-sm: 28px;
+$font-size-md: 35px;
+$font-size-lg: 40px;
 
-// 分割线
-$line-apart-color: #ddd;
-$line-apart-lighter-color: #eee;
+// 圆角尺寸
+$radius-sm: 3px;
+$radius-md: 7px;
+$radius-lg: 10px;
+$radius-circle: 50%;
+
+// 三角形尺寸
+$arrow-sm: 15px;
+$arrow-md: 20px;
+$arrow-lg: 25px;
+
+// 边框尺寸
+$border-width-sm: 1px;
+$border-width-md: 2px;
+$border-width-lg: 3px;
+// 边框颜色
+$border-color: #dcdee0; // 默认
+$border-color-secondary: #ccc; // 次色
+$border-color-activate: $primary-color; // 激活
+
+// 文字粗细
+$font-weight-base: bold;
+$font-weight-sm: 800;
+$font-weight-md: 900;
+$font-weight-lg: 100;
+
+// 高度
+$line-height: 1; // 单行行高
+$line-height-paragraph: 1.5; // 多行行高
+
+// 标题
+$h1-size: 90px;
+$h2-size: 80px;
+$h3-size: 70px;
+$h4-size: 60px;
+$h5-size: 50px;
+$h6-size: 40px;
+
+// 阴影
+$shadow-sm: 0px 40px 100px 0px rgba(0, 0, 0, 0.175);
+$shadow-md: 0px 40px 100px 0px rgba(0, 0, 0, 0.175);
+$shadow-lg: 0px 40px 100px 0px rgba(0, 0, 0, 0.175);
+
+// 渐变
+
+@import './global';

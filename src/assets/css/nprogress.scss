@@ -1,0 +1,6 @@
+#nprogress .bar {
+	background: $primary-color !important; //自定义颜色
+}
+#nprogress .spinner-icon {
+	border-color: $primary-color rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $primary-color;
+}

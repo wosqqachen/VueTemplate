@@ -1,0 +1,25 @@
+// 用户信息
+export const USER_INFO_SET = 'USER_INFO_SET';
+export const USER_INFO_GET = 'USER_INFO_GET';
+export const USER_INFO_REMOVE = 'USER_INFO_REMOVE';
+export const USER_INFO_SET_ACTION = 'USER_INFO_SET_ACTION';
+export const USER_INFO_REMOVE_ACTION = 'USER_INFO_REMOVE_ACTION';
+// 公众参数
+export const COMMON_PARAMS_SET = 'COMMON_PARAMS_SET';
+export const COMMON_PARAMS_GET = 'COMMON_PARAMS_GET';
+export const COMMON_PARAMS_SET_ACTION = 'COMMON_PARAMS_SET_ACTION';
+// 多语言
+export const LANG_SET = 'LANG_SET';
+export const LANG_GET = 'LANG_GET';
+export const LANG_SET_ACTION = 'LANG_SET_ACTION';
+// 请求取消
+export const REQCANCEL_SET = 'REQCANCEL_SET';
+export const REQCANCEL_GET = 'REQCANCEL_GET';
+export const REQCANCEL_REMOVE = 'REQCANCEL_REMOVE';
+export const CREQCANCEL_SET_ACTION = 'CREQCANCEL_SET_ACTION';
+export const REQCANCEL_REMOVE_ACTION = 'REQCANCEL_REMOVE_ACTION';
+// 缓存的vuexstore
+export const VUEX_STATE = 'VUEX_STATE';
+
+// 路由返回
+export const BACK = 'BACK';

@@ -1,159 +1,85 @@
-const path = require('path');
-const webpack = require('webpack');
-const TerserPlugin = require('terser-webpack-plugin');
+const { defineConfig } = require('@vue/cli-service');
+const { VantResolver } = require('unplugin-vue-components/resolvers');
+const ComponentsPlugin = require('unplugin-vue-components/webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
-const CompressionWebpackPlugin = require('compression-webpack-plugin');
-const PurifyCSS = require('purifycss-webpack');
-const glob = require('glob-all');
-const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
-const resolve = dir => path.join(__dirname, dir);
+// const path = require('path');
+// const resolve = dir => path.join(__dirname, dir);
+
 const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV);
-module.exports = {
-	publicPath : IS_PROD ? '/' : '/', //如果部署不在是根路径需要做修改
-	lintOnSave : IS_PROD,
-	productionSourceMap : false,
-	parallel : require('os').cpus().length > 1,
-	devServer : {
-		open : true,
-		port : 8081,
-		proxy : {
-			'/api' : {
-				target : 'http://localhost:7878',
-				ws : false,
-				changOrigin : true // 是否将请求header中的origin修改为目标地址
+module.exports = defineConfig({
+	transpileDependencies: true,
+	publicPath: IS_PROD ? '/donut-h5' : '/',
+	lintOnSave: IS_PROD,
+	productionSourceMap: false,
+	parallel: require('os').cpus().length > 1,
+	devServer: {
+		open: true,
+		port: 8081,
+		compress: true,
+		hot: true,
+		proxy: {
+			'/api': {
+				target: 'http://127.0.0.1:7878',
+				ws: false,
+				changOrigin: true, // 是否将请求header中的origin修改为目标地址
 				// pathRewrite: {
 				//   '^/api': ''
 				// }
-			}
+			},
 		},
-		overlay : {
-			warnings : true,
-			errors : true
-		}
+		client: {
+			progress: true,
+			overlay: {
+				errors: true,
+				warnings: true,
+			},
+		},
 	},
-	css : {
-		loaderOptions : {
-			sass : {
-				data : `
-          @import "@/assets/css/variables.scss";
-        `
-			}
-		}
+	css: {
+		loaderOptions: {
+			sass: {
+				additionalData: '@import "@/assets/css/variables.scss";',
+			},
+		},
 	},
-	configureWebpack : config => {
-		config.resolve.extensions = ['.js', '.vue', '.scss', '.json'];
-		if (IS_PROD) {
-			config.plugins.push(
-				new webpack.DllReferencePlugin({
-					context : process.cwd(),
-					manifest : resolve('dll/dll_manifest.json')
-				}),
-				new webpack.DllReferencePlugin({
-					context : process.cwd(),
-					manifest : resolve('dll/vue_manifest.json')
-				}),
-				new AddAssetHtmlPlugin({
-					filepath : resolve('dll/*.js')
-				})
-			);
-			config.optimization = {
-				splitChunks : {
-					chunks : 'all',
-					minSize : 30000,
-					minChunks : 1,
-					maxAsyncRequests : 5,
-					maxInitialRequests : 3,
-					automaticNameDelimiter : '~',
-					name : true,
-					cacheGroups : {
-						vendors : {
-							test : /[\\/]node_modules[\\/]/,
-							priority : -10,
-							name : 'vendors'
-						},
-						default : {
-							minChunks : 2,
-							priority : -20,
-							reuseExistingChunk : true,
-							name : 'commons'
-						}
-					}
-				},
-				minimizer : [
-					new TerserPlugin({
-						terserOptions : {
-							ecma : undefined,
-							warnings : false,
-							parse : {},
-							compress : {
-								drop_console : true,
-								drop_debugger : true,
-								pure_funcs : ['console.log'] // 移除console
-							}
-						}
-					})
-				]
-			};
-			config.plugins.push(
-				// 清除⽆无⽤用 cssc
-				new PurifyCSS({
-					paths : glob.sync([
-						path.resolve(__dirname, './src/*.html'),
-						path.resolve(__dirname, './src/*.js'),
-						path.resolve(__dirname, './src/*.vue')
-					])
-				}),
-				//开启gzip压缩
-				new CompressionWebpackPlugin({
-					filename : '[path].gz[query]',
-					algorithm : 'gzip',
-					test : productionGzipExtensions,
-					threshold : 10240,
-					minRatio : 0.8
-				}),
-			);
-		}
+	configureWebpack: {
+		resolve: {
+			extensions: ['.ts', '.js', '.vue', '.scss', '.json'],
+		},
+		plugins: [
+			ComponentsPlugin({
+				resolvers: [VantResolver()],
+			}),
+		],
 	},
-	chainWebpack : config => {
-		// 修复HMR
-		config.resolve.symlinks(true);
-		config.resolve.alias
-			.set('@', resolve('src'))
-			.set('@components', resolve('src/components'));
+	chainWebpack: config => {
+		// 关闭i18警告
+		config.resolve.alias.set('vue-i18n', 'vue-i18n/dist/vue-i18n.cjs.js');
 		// 打包分析
 		if (process.env.IS_ANALYZ) {
-			config.plugin('webpack-report')
-				.use(BundleAnalyzerPlugin, [{
-					analyzerMode : 'server',
-					openAnalyzer : true
-				}]);
+			config.plugin('webpack-report').use(BundleAnalyzerPlugin, [
+				{
+					analyzerMode: 'server',
+					openAnalyzer: true,
+				},
+			]);
 		}
-		if (IS_PROD) {
-			// 压缩图片
-			config.module
-				.rule('images')
-				.use('image-webpack-loader')
-				.loader('image-webpack-loader')
-				.options({
-					mozjpeg : {
-						progressive : true,
-						quality : 65
-					},
-					optipng : {
-						enabled : false
-					},
-					pngquant : {
-						quality : [0.65, 0.90],
-						speed : 4
-					},
-					gifsicle : {
-						interlaced : false
-					},
-					webp : {
-						quality : 75
-					}
-				});
-		}
-	}
-};
+		config.module
+			.rule('vue')
+			.test(/\.vue$/)
+			.use('postcss-style-px-to-viewport')
+			.loader('postcss-style-px-to-viewport')
+			.options({
+				unitToConvert: 'px', // 需要转换的单位
+				viewportWidth: 750, // 视窗的宽度，对应的是我们设计稿的宽度，一般是750
+				viewportHeight: 1334, // 视窗的高度，根据750设备的宽度来指定，一般指定1334，也可以不配置
+				unitPrecision: 3, // 指定`px`转换为视窗单位值的小数位数（很多时候无法整除）
+				viewportUnit: 'vw', // 指定需要转换成的视窗单位，建议使用vw
+				fontViewportUnit: 'vw', // 字体使用的视口单位
+				selectorBlackList: ['.ignore', '.hairlines', '.donut-'], // 指定不转换为视窗单位的类，可以自定义，可以无限添加,建议定义一至两个通用的类名
+				minPixelValue: 1, // 小于或等于`1px`不转换为视窗单位，你也可以设置为你想要的值
+				mediaQuery: false, // 允许在媒体查询中转换`px`
+				exclude: /(\/|\\)(node_modules)(\/|\\)/, // 排除node_modules文件中第三方css文件
+			});
+	},
+});

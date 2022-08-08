@@ -1,15 +1,15 @@
 .h-arrow-l {
-  @include arrow(10px, #000, right)
+  @include arrow($arrow-md, $primary-color, right);
 }
 
 .h-arrow-r {
-  @include arrow(10px, #000)
+  @include arrow($arrow-md, $primary-color);
 }
 
 .h-arrow-t {
-  @include arrow(10px, #000, bottom)
+  @include arrow($arrow-md, $primary-color, bottom);
 }
 
 .h-arrow-b {
-  @include arrow(10px, #000, top)
+  @include arrow($arrow-md, $primary-color, top);
 }
