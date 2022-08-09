@@ -19,9 +19,8 @@
 	import ExampleList from './components/ExampleList.vue';
 	import ExampleForm from './components/ExampleForm.vue';
 	import ExamplePaction from './components/ExamplePaction.vue';
-	import store from '@/store';
-	import { LANG_SET_ACTION } from '@/utils/Const';
 	import { useDialog } from '@/hooks';
+	import { useLang } from '@/hooks/useLang';
 	export default defineComponent({
 		name: 'HomeView',
 		components: {
@@ -45,8 +44,7 @@
 						});
 					},
 				});
-				proxy.$i18n.locale = lang;
-				store.dispatch(`lang/${LANG_SET_ACTION}`, lang);
+				useLang(proxy, lang);
 			};
 			return {
 				active,
