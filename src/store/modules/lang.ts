@@ -6,7 +6,7 @@ import { IRootState, IlangState } from '../types';
 const lang: Module<IlangState, IRootState> = {
 	namespaced: true,
 	state: {
-		lang: 'zh',
+		lang: 'en',
 	},
 	getters: {
 		[LANG_GET](state: IlangState): string {
@@ -14,12 +14,12 @@ const lang: Module<IlangState, IRootState> = {
 		},
 	},
 	mutations: {
-		[LANG_SET](state: IlangState, payload: string): void {
+		[LANG_SET](state: IlangState, payload: 'zh' | 'en'): void {
 			state.lang = payload;
 		},
 	},
 	actions: {
-		[LANG_SET_ACTION]({ commit }: ActionContext<IlangState, IRootState>, payload: string): void {
+		[LANG_SET_ACTION]({ commit }: ActionContext<IlangState, IRootState>, payload: 'zh' | 'en'): void {
 			commit(LANG_SET, payload);
 		},
 	},

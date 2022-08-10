@@ -16,7 +16,5 @@ const mapLang = {
 export const useLang = (proxy, langType: 'zh' | 'en') => {
 	proxy.$i18n.locale = langType;
 	store.dispatch(`lang/${LANG_SET_ACTION}`, langType);
-	console.log(mapLang[langType].key);
-	console.log(mapLang[langType].value);
 	Locale.use(mapLang[langType].key, mapLang[langType].value);
 };

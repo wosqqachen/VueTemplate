@@ -13,5 +13,6 @@ module.exports = {
 		'@typescript-eslint/no-explicit-any': ['off'], // 新增这句话，关闭any报错
 		'@typescript-eslint/no-empty-function': ['off'],
 		'no-self-assign': ['off'],
+		'vue/multi-word-component-names': ['off'],
 	},
 };

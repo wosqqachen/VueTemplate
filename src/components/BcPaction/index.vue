@@ -54,6 +54,8 @@
 								Toast.clear();
 								Toast.fail('协议加载失败');
 							});
+					} else {
+						ctx.close && ctx.close();
 					}
 				},
 				{

@@ -11,7 +11,7 @@ export interface IReqCancelState {
 	reqQueue: Canceler[];
 }
 export interface IlangState {
-	lang: string;
+	lang: 'zh' | 'en';
 }
 
 export interface IRootState {
