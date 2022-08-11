@@ -1,5 +1,5 @@
 <template>
-	<van-popup position="bottom" :style="{ height: '100%' }" teleport="body" v-model:show="state.dialogVisible" @closed="state.dialogVisible = false" safe-area-inset-top safe-area-inset-bottom transition-appear>
+	<van-popup position="bottom" :style="{ height: '100%' }" @closed="animateEnd()" v-model:show="state.dialogVisible" safe-area-inset-top safe-area-inset-bottom transition-appear close-on-popstate>
 		<van-nav-bar fixed placeholder :title="title || '协议'" left-text="返回" left-arrow @click-left="state.dialogVisible = false" />
 		<div :id="id" class="paction"></div>
 	</van-popup>
@@ -19,6 +19,7 @@
 			dialogVisible: Boolean,
 			title: String,
 			close: Function,
+			animateEndcallcak: Function,
 		},
 		setup(ctx: any) {
 			let id = `${v4()}-agreement`;
@@ -30,6 +31,11 @@
 			let open = ({ url }: Pick<BcPactionProps, 'url'>) => {
 				state.dialogVisible = true;
 				state.url = url;
+			};
+
+			let animateEnd = () => {
+				ctx.animateEndcallcak && ctx.animateEndcallcak();
+				ctx.close && ctx.close();
 			};
 
 			watch(
@@ -54,8 +60,6 @@
 								Toast.clear();
 								Toast.fail('协议加载失败');
 							});
-					} else {
-						ctx.close && ctx.close();
 					}
 				},
 				{
@@ -67,6 +71,7 @@
 				open,
 				id,
 				state,
+				animateEnd,
 			};
 		},
 	});

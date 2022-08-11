@@ -4,6 +4,7 @@ import BcPaction from './index.vue';
 export interface BcPactionProps {
 	title?: string;
 	url: string;
+	animateEndcallcak: () => void;
 }
 function createInstance(props: BcPactionProps) {
 	const { unmount } = mountComponent({
