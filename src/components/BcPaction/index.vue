@@ -10,7 +10,6 @@
 	import axios from 'axios';
 	import { Toast } from 'vant';
 	import { renderAsync } from 'docx-preview';
-	import { BcPactionProps } from '.';
 
 	export default defineComponent({
 		name: 'BcPaction',
@@ -28,7 +27,7 @@
 				url: ctx.url,
 			});
 
-			let open = ({ url }: Pick<BcPactionProps, 'url'>) => {
+			let open = ({ url }) => {
 				state.dialogVisible = true;
 				state.url = url;
 			};
