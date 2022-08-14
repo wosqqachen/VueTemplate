@@ -21,7 +21,7 @@ export const useCountDown = (cumulative = 60) => {
 				return;
 			}
 			smSconfig.cumulative--;
-			smSconfig.smsText = `请重新发送(${smSconfig.cumulative + 1})`;
+			smSconfig.smsText = `请重新发送(${smSconfig.cumulative + 1})S`;
 		}, 1000);
 	};
 

@@ -1,5 +1,5 @@
 <template>
-	<van-form @failed="onfailed" :show-error-message="true" :show-error="false" :submit-on-enter="false" @submit="onSubmit">
+	<van-form @failed="onfailed" :show-error-message="false" :show-error="false" :submit-on-enter="false" @submit="onSubmit">
 		<slot v-for="item in formConfigList" :key="item.key" :name="item.key" :row="item">
 			<van-field v-if="item.componentType == 'select'" v-model="formModels[item.key]" :name="item.key" :label="item.label" :placeholder="item.placeholder" :rules="item.rules" is-link readonly @click="showPopupHandler(item)" />
 			<van-field v-else-if="item.componentType == 'calendar'" v-model="formModels[item.key]" :name="item.key" :label="item.label" :placeholder="item.placeholder" :rules="item.rules" is-link readonly @click="showPopupHandler(item)" />

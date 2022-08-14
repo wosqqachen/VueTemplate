@@ -13,7 +13,7 @@ const mapLang = {
 		value: en,
 	},
 };
-export const useLang = (proxy, langType: 'zh' | 'en') => {
+export const useSetLanguage = (proxy, langType: 'zh' | 'en') => {
 	proxy.$i18n.locale = langType;
 	store.dispatch(`lang/${LANG_SET_ACTION}`, langType);
 	Locale.use(mapLang[langType].key, mapLang[langType].value);

@@ -1,4 +1,4 @@
-import { CREQCANCEL_SET_ACTION } from './Const';
+import { CREQCANCEL_SET_ACTION, USER_INFO_REMOVE_ACTION } from './Const';
 import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig, Canceler, AxiosResponse } from 'axios';
 axios.defaults.headers.common['Content-Type'] = 'application/json;charset=UTF-8';
@@ -101,6 +101,7 @@ class Httprequest {
 					delete this.queue[unique];
 					console.log('请求取消');
 				} else if (error.response && error.response.status === 401) {
+					store.dispatch(`userInfo/${USER_INFO_REMOVE_ACTION}`);
 					Dialog({
 						title: '提示',
 						message: '登录过期,请重新登录',

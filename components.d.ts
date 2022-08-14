@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     BcDigitalAnimation: typeof import('./src/components/BcDigitalAnimation/index.vue')['default']
     BcForm: typeof import('./src/components/BcForm/index.vue')['default']
     BcList: typeof import('./src/components/BcList/index.vue')['default']
+    BcMultiText: typeof import('./src/components/BcMultiText/index.vue')['default']
     BcPaction: typeof import('./src/components/BcPaction/index.vue')['default']
     CountTo: typeof import('./src/components/CountTo/index.vue')['default']
     IconSvg: typeof import('./src/components/IconSvg/index.vue')['default']
