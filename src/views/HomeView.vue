@@ -3,7 +3,7 @@
 	{{ $t('upload') }}
 	<van-button @click="changeLang('zh')">切换中文</van-button>
 	<van-button @click="changeLang('en')">语言英文</van-button>
-	<bc-multi-text expand="Read more >" :isExpand="true">You have yourYou have youYou have youYou havYou have yourYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have you Donut community. Now paaagggg Donut ces11</bc-multi-text>
+	<bc-multi-text :disabledExpand="false">You have yourYou have youYou have youYou havYou have yourYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have you Donut community. Now paaagggg Donut ces11</bc-multi-text>
 
 	<van-tabs v-model:active="active">
 		<van-tab title="表单组件"></van-tab>

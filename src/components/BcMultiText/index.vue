@@ -1,11 +1,10 @@
 <template>
-	<div class="multi-text-flex">
-		<div class="multi-text-wrap" :id="id" :style="{ '-webkit-line-clamp': lineClamp }">
-			<div class="multi-text-btn" v-if="isMoreBtn" @click="toggleHandler()">{{ toggleText }}</div>
-			<div class="multi-text-content">
-				<slot></slot>
-			</div>
-		</div>
+	<div class="multi-text" :id="id">
+		<slot></slot>
+		<span class="more" v-if="isMoreBtn">
+			<span v-if="!isExpand">...</span>
+			<span class="text-primary" @click="expandEvent()">{{ moreText }}</span>
+		</span>
 	</div>
 </template>
 <script lang="ts">
@@ -14,7 +13,7 @@
 	export default defineComponent({
 		name: 'BcMultiText',
 		props: {
-			clamp: {
+			line: {
 				type: Number,
 				default: 5,
 			},
@@ -26,92 +25,76 @@
 				type: String,
 				default: '收起',
 			},
-			isExpand: {
+			disabledExpand: {
 				type: Boolean,
-				default: false,
-			},
-			onToggle: {
-				type: Function,
+				default: true,
 			},
 		},
-		setup(ctx) {
+		setup(ctx: any) {
 			let id = `${v4()}-multi`;
 			let isMoreBtn = ref(false);
 			let multiDom: HTMLElement;
-			let lineClamp = ref(ctx.clamp);
-			let toggleText = ref(ctx.expandText);
-			let isToggle = false;
+			let textLine = ctx.line as number;
+			let isExpand = ref(false);
+			let maxHeight = '';
 			let scrollHeight = 0;
-			let clientHeight = 0;
+			let moreText = ref(ctx.expandText);
+			let pxTovw = num => {
+				const vwNum = (num / (750 / 100)).toFixed(3);
+				return `${vwNum}vw`;
+			};
 
-			let toggleHandler = () => {
-				ctx.onToggle && ctx.onToggle();
-				if (!ctx.isExpand) return;
-				isToggle = !isToggle;
-				let h = 0;
-				if (isToggle) {
-					h = scrollHeight;
-					lineClamp.value = 9999;
-					toggleText.value = ctx.pickUpText;
-				} else {
-					h = clientHeight;
-					lineClamp.value = ctx.clamp;
-					toggleText.value = ctx.expandText;
+			let expandEvent = () => {
+				if (ctx.disabledExpand) {
+					return;
 				}
-				multiDom.style['height'] = `${h}px`;
+				if (isExpand.value) {
+					isExpand.value = false;
+					moreText.value = ctx.expandText;
+					multiDom.style['max-height'] = maxHeight;
+				} else {
+					isExpand.value = true;
+					moreText.value = ctx.pickUpText;
+					multiDom.style['max-height'] = `${scrollHeight}px`;
+				}
 			};
 
 			onMounted(() => {
 				multiDom = document.getElementById(id) as HTMLElement;
-				multiDom.style['height'] = `${multiDom.clientHeight}px`;
+				maxHeight = pxTovw(40 * textLine - 2.5);
+				multiDom.style['max-height'] = maxHeight;
 				scrollHeight = multiDom.scrollHeight;
-				clientHeight = multiDom.clientHeight;
-				isMoreBtn.value = scrollHeight > clientHeight;
-				if (isMoreBtn.value) {
-					toggleText.value = ctx.expandText;
-				}
+				isMoreBtn.value = scrollHeight > multiDom.clientHeight;
 			});
 			return {
-				lineClamp,
-				toggleHandler,
-				isMoreBtn,
-				toggleText,
 				id,
+				isMoreBtn,
+				expandEvent,
+				isExpand,
+				moreText,
 			};
 		},
 	});
 </script>
-<style lang="scss">
-	.multi-text- {
-		&flex {
-			display: flex;
-		}
-		&wrap {
-			display: -webkit-box;
-			overflow: hidden;
-			-webkit-box-orient: vertical;
-			transition: all 0.3s linear;
-			&:before {
-				content: '';
-				float: right;
-				height: 100%;
-				margin-bottom: -36px;
-			}
-		}
-		&btn {
-			float: right;
-			clear: both;
-		}
+
+<style lang="scss" scoped>
+	.multi-text {
+		position: relative;
+		overflow: hidden;
+		font-size: 32px;
+		font-weight: normal;
+		line-height: 40px;
+		letter-spacing: 0px;
+		color: rgba(0, 0, 0, 0.6);
+		transition: all 0.3s linear;
 	}
-	.multi-text-content {
+	.more {
+		position: absolute;
+		right: 0;
+		bottom: 0;
 		font-size: 32px;
 		line-height: 40px;
-		color: rgba(0, 0, 0, 0.6);
-	}
-	.multi-text-btn {
-		position: relative;
-		z-index: 1025;
-		color: $primary-color;
-		font-size: 32px;
+		background: #fff;
+		z-index: 1024;
 	}
 </style>
