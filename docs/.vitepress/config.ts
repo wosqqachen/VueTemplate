@@ -4,10 +4,9 @@ const resolve = dir => path.join(__dirname, dir);
 const IS_PROD = () => {
 	return process.argv[process.argv.length - 1] === 'build';
 };
-console.log(IS_PROD());
 export default defineConfig({
 	outDir: resolve('../../document'),
-	base: IS_PROD() ? '/document/' : '/',
+	base: IS_PROD() ? '/vue3-vant4-template/document/' : '/',
 	title: '业务组件文档',
 	description: '业务组件文档',
 	head: [['link', { rel: 'icon', type: 'image/svg+xml', href: 'images/logo.svg' }]],
