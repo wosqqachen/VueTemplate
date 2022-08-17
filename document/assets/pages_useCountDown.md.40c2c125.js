@@ -1,4 +1,4 @@
-import{_ as m,V as l,c as _,a as i,w as r,b as n,d as t,r as k,o as f}from"./app.f6a2be30.js";const g={name:"component-doc",components:{"render-demo-0":function(){const{openBlock:s,createElementBlock:a}=l;function e(u,p){return s(),a("div",null," \u6587\u6863\u5F85\u586B\u5145 ")}const{defineComponent:o,ref:d}=l,c=o({setup(){return{}}});return{render:e,...c}}()}},v=JSON.parse('{"title":"bcPaction\u534F\u8BAE\u7EC4\u4EF6","description":"","frontmatter":{},"headers":[],"relativePath":"pages/bcPaction.md","lastUpdated":1660035188000}'),E=n("h1",{id:"bcpaction\u534F\u8BAE\u7EC4\u4EF6",tabindex:"-1"},[t("bcPaction\u534F\u8BAE\u7EC4\u4EF6 "),n("a",{class:"header-anchor",href:"#bcpaction\u534F\u8BAE\u7EC4\u4EF6","aria-hidden":"true"},"#")],-1),F=n("div",null,"\u57FA\u4E8E\u6D41\u6C0F\u5904\u7406\uFF0C\u5FEB\u901F\u751F\u6210\u534F\u8BAE\uFF0C\u53EA\u9700\u8981\u4E00\u4E2A.docx\u683C\u5F0F\u7684\u6587\u6863\u5730\u5740",-1),h=n("div",{class:"language-vue"},[n("pre",null,[n("code",null,[t(`
+import{_ as m,V as l,c as _,a as r,w as k,b as n,d as t,r as i,o as f}from"./app.7d88e4af.js";const g={name:"component-doc",components:{"render-demo-0":function(){const{openBlock:s,createElementBlock:a}=l;function e(p,u){return s(),a("div",null," \u6587\u6863\u5F85\u586B\u5145 ")}const{defineComponent:o,ref:d}=l,c=o({setup(){return{}}});return{render:e,...c}}()}},C=JSON.parse('{"title":"\u5012\u8BA1\u65F6hook","description":"","frontmatter":{},"headers":[],"relativePath":"pages/useCountDown.md","lastUpdated":1660717761000}'),h=n("h1",{id:"\u5012\u8BA1\u65F6hook",tabindex:"-1"},[t("\u5012\u8BA1\u65F6hook "),n("a",{class:"header-anchor",href:"#\u5012\u8BA1\u65F6hook","aria-hidden":"true"},"#")],-1),B=n("div",null,"\u5012\u8BA1\u65F6",-1),v=n("div",{class:"language-vue"},[n("pre",null,[n("code",null,[t(`
 `),n("span",{class:"token tag"},[n("span",{class:"token tag"},[n("span",{class:"token punctuation"},"<"),t("template")]),n("span",{class:"token punctuation"},">")]),t(`
 	\u6587\u6863\u5F85\u586B\u5145
 `),n("span",{class:"token tag"},[n("span",{class:"token tag"},[n("span",{class:"token punctuation"},"</"),t("template")]),n("span",{class:"token punctuation"},">")]),t(`
@@ -16,7 +16,7 @@ import{_ as m,V as l,c as _,a as i,w as r,b as n,d as t,r as k,o as f}from"./app
 
 `)]),n("span",{class:"token tag"},[n("span",{class:"token tag"},[n("span",{class:"token punctuation"},"</"),t("style")]),n("span",{class:"token punctuation"},">")]),t(`
 
-`)])])],-1);function B(s,a,e,o,d,c){const u=k("render-demo-0"),p=k("demo");return f(),_("div",null,[E,F,i(p,{sourceCode:`
+`)])])],-1);function x(s,a,e,o,d,c){const p=i("render-demo-0"),u=i("demo");return f(),_("div",null,[h,B,r(u,{sourceCode:`
 <template>
 	\u6587\u6863\u5F85\u586B\u5145
 </template>
@@ -34,4 +34,4 @@ import{_ as m,V as l,c as _,a as i,w as r,b as n,d as t,r as k,o as f}from"./app
 
 </style>
 
-`},{highlight:r(()=>[h]),default:r(()=>[i(u)]),_:1})])}var x=m(g,[["render",B]]);export{v as __pageData,x as default};
+`},{highlight:k(()=>[v]),default:k(()=>[r(p)]),_:1})])}var w=m(g,[["render",x]]);export{C as __pageData,w as default};
