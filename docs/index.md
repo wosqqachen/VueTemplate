@@ -14,7 +14,7 @@ hero:
       link: /pages/guide
     - theme: alt
       text: 在 GitHub 上查看
-      link: https://gitee.com/javaweb-h5/donut-h5
+      link: https://gitee.com/javaweb-h5/vue3-vant4-template
 
 features:
   - title: Ash Maurya
