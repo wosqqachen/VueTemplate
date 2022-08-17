@@ -1,7 +1,13 @@
 import { defineConfig } from 'vitepress';
-
+import path from 'path';
+const resolve = dir => path.join(__dirname, dir);
+const IS_PROD = () => {
+	return process.argv[process.argv.length - 1] === 'build';
+};
+console.log(IS_PROD());
 export default defineConfig({
-	base: '/',
+	outDir: resolve('../../document'),
+	base: IS_PROD() ? '/document/' : '/',
 	title: '业务组件文档',
 	description: '业务组件文档',
 	head: [['link', { rel: 'icon', type: 'image/svg+xml', href: 'images/logo.svg' }]],
@@ -19,7 +25,7 @@ export default defineConfig({
 	themeConfig: {
 		lastUpdatedText: '上次更新',
 		editLink: {
-			pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path',
+			pattern: 'https://gitee.com/javaweb-h5/vue3-vant4-template',
 			text: '在GitHub上编辑此页',
 		},
 		logo: 'images/logo.svg',
@@ -29,7 +35,7 @@ export default defineConfig({
 			{ text: '更新日志', link: '/pages/updateLog' },
 		],
 
-		socialLinks: [{ icon: 'github', link: 'https://gitee.com/javaweb-h5/donut-h5' }],
+		socialLinks: [{ icon: 'github', link: 'https://gitee.com/javaweb-h5/vue3-vant4-template' }],
 		sidebar: [
 			{
 				collapsible: true,
@@ -45,7 +51,7 @@ export default defineConfig({
 				collapsible: true,
 				items: [
 					{
-						text: '   表单组件',
+						text: '表单组件',
 						link: '/pages/bcForm',
 					},
 					{
@@ -67,11 +73,15 @@ export default defineConfig({
 				collapsible: true,
 				items: [
 					{
+						text: '路由',
+						link: '/pages/useRoutes',
+					},
+					{
 						text: 'dialog弹框',
 						link: '/pages/useDialog',
 					},
 					{
-						text: '文字复制',
+						text: '文本复制',
 						link: '/pages/useClipboard',
 					},
 					{

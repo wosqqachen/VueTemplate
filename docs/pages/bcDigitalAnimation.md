@@ -1,8 +1,8 @@
 # bcDigitalAnimation组件
- 金额动画组件
+<div>数字金额动画组件</div>
 
 <ClientOnly>
-  <van-button type="primary">bcDigitalAnimation</van-button>
+  文档待填充
 </ClientOnly>
 
 

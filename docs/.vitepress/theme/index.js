@@ -5,7 +5,7 @@ import Vant from 'vant';
 import Demo from 'vitepress-theme-demoblock/components/Demo.vue';
 import DemoBlock from 'vitepress-theme-demoblock/components/DemoBlock.vue';
 import 'vant/lib/index.css';
-import './custom.css';
+import './index.scss';
 export default {
 	...DefaultTheme,
 	enhanceApp({ app }) {

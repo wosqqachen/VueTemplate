@@ -1,8 +1,35 @@
-# dialog弹框
- 快速构建表单，基于数据驱动表单
+# dialog弹框hook
 
-<ClientOnly>
-  <van-button type="primary"> dialog弹框</van-button>
-</ClientOnly>
+<div>dialog弹框</div>
+
+:::demo
+
+```vue
+
+<template>
+	文档待填充
+</template>
+
+<script lang="ts">
+	import { defineComponent, ref } from 'vue';
+	export default defineComponent({
+		setup() {
+			return {
+			};
+		},
+	});
+</script>
+<style>
+
+</style>
+
+```
+
+:::
+
+
+
+
+
 
 

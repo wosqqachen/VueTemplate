@@ -1,8 +1,33 @@
-# 倒计时
- 快速构建表单，基于数据驱动表单
+# 倒计时hook
 
-<ClientOnly>
-  <van-button type="primary"> 倒计时</van-button>
-</ClientOnly>
+<div>倒计时</div>
+
+:::demo
+
+```vue
+
+<template>
+	文档待填充
+</template>
+
+<script lang="ts">
+	import { defineComponent, ref } from 'vue';
+	export default defineComponent({
+		setup() {
+			return {
+			};
+		},
+	});
+</script>
+<style>
+
+</style>
+
+```
+
+:::
+
+
+
 
 

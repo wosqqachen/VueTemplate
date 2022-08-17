@@ -2,8 +2,7 @@
 node_modules
 /dist
 /mock/upload
-/donut-h5
-donut-h5.zip
+vue3-vant4-template.zip
 # local env files
 .env.local
 .env.*.local

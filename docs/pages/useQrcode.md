@@ -1,8 +1,37 @@
-# 二维码
- 快速构建表单，基于数据驱动表单
+# 二维码hook
 
-<ClientOnly>
-  <van-button type="primary"> 二维码</van-button>
-</ClientOnly>
+
+<div>根据dom快递生成二维码</div>
+
+:::demo
+
+```vue
+
+<template>
+	文档待填充
+</template>
+
+<script lang="ts">
+	import { defineComponent, ref } from 'vue';
+	export default defineComponent({
+		setup() {
+			return {
+			};
+		},
+	});
+</script>
+<style>
+
+</style>
+
+```
+
+:::
+
+
+
+
+
+
 
 
