@@ -1,5 +1,5 @@
 <template>
-	<van-form @failed="onfailed" :show-error-message="false" :show-error="false" :submit-on-enter="false" @submit="onSubmit">
+	<van-form ref="form" @failed="onfailed" :show-error-message="!isVerifyModelToast" :show-error="false" :submit-on-enter="true" @submit="onSubmit">
 		<slot v-for="item in formConfigList" :key="item.key" :name="item.key" :row="item">
 			<van-field v-if="item.componentType == 'select'" v-model="formModels[item.key]" :name="item.key" :label="item.label" :placeholder="item.placeholder" :rules="item.rules" is-link readonly @click="showPopupHandler(item)" />
 			<van-field v-else-if="item.componentType == 'calendar'" v-model="formModels[item.key]" :name="item.key" :label="item.label" :placeholder="item.placeholder" :rules="item.rules" is-link readonly @click="showPopupHandler(item)" />
@@ -47,7 +47,7 @@
 			<template v-else-if="item.componentType == 'sms'">
 				<van-field v-model="formModels[item.key]" :name="item.key" :type="item.type as any" :maxlength="item.maxlength" clearable :label="item.label" :placeholder="item.placeholder" :rules="item.rules" @input="formatter(item.key, item.formatter)">
 					<template #button>
-						<van-button :disabled="countDownData.smSconfig.cumulative < countDownData.CUMULATIVE" size="small" type="primary" @click="handlerCountdown(item.handlerCountdown, countDownData.countdown, formModels)">{{ countDownData.smSconfig.smsText }}</van-button>
+						<van-button :disabled="countDownData.smSconfig.cumulative < countDownData.CUMULATIVE" size="small" type="primary" @click="handlerCountdown(item, countDownData.countdown)">{{ countDownData.smSconfig.smsText }}</van-button>
 					</template>
 				</van-field>
 			</template>
@@ -64,7 +64,7 @@
 	</van-form>
 </template>
 <script lang="ts">
-	import { defineComponent, nextTick, reactive, ref } from 'vue';
+	import { defineComponent, nextTick, reactive, ref, getCurrentInstance } from 'vue';
 	import { Toast } from 'vant';
 	import DateFormat from '@/utils/DateFormat';
 	import { useCountDown } from '@/hooks/index';
@@ -82,6 +82,7 @@
 		label?: string;
 		placeholder?: string;
 		maxlength?: number;
+		beforeValidateKey?: Array<string>;
 		rules?: Array<object>;
 		direction: 'horizontal' | 'vertical';
 		shape: 'square' | 'round';
@@ -118,8 +119,14 @@
 				type: Function as PropType<(formModels: object) => Promise<any>>,
 				required: true,
 			},
+			// 验证不通过时，是否Toast展示模式
+			isVerifyModelToast: {
+				type: Boolean,
+				default: true,
+			},
 		},
 		setup(ctx: any) {
+			let Instance: any = getCurrentInstance()?.proxy;
 			// 表单模型
 			let formModels = reactive({});
 			// 控制选择器展示
@@ -195,14 +202,20 @@
 				}
 				confirmCallback && confirmCallback(payload.value, payload, formModels);
 			};
-
 			// 倒计时处理
 			let countDownData = useCountDown();
-			let handlerCountdown = (handlerCountdown, countdown, formModels) => {
+			let handlerCountdown = async (formConfig, countdown) => {
 				if (countDownData.smSconfig.cumulative !== countDownData.CUMULATIVE) {
 					return Toast('请倒计时结束后在点击');
 				}
-				handlerCountdown(countdown, formModels);
+				try {
+					await Instance.$refs['form'].validate(formConfig.beforeValidateKey);
+					formConfig.handlerCountdown(countdown);
+				} catch (error: any) {
+					if (ctx.isVerifyModelToast) {
+						Toast(error[0].message);
+					}
+				}
 			};
 
 			// 输入限制
@@ -214,7 +227,9 @@
 
 			// 错误tip
 			const onfailed = errors => {
-				Toast(errors.errors[0].message);
+				if (ctx.isVerifyModelToast) {
+					Toast(errors.errors[0].message);
+				}
 			};
 
 			const afterRead = formConfig => {

@@ -1,14 +1,18 @@
 <template>
 	<van-pull-refresh v-model="refreshing" @refresh="onLoad({ isResetPageNumber: true })">
-		<van-list v-model:loading="loading" v-model:error="error" :finished="finished" finished-text="没有更多了" error-text="请求失败，点击重新加载" @load="onLoad">
+		<van-list v-model:loading="loading" v-model:error="error" :finished="finished" :finished-text="finishedText" @load="onLoad">
 			<template v-for="row in list">
 				<slot name="data" :row="row"></slot>
 			</template>
 			<template #error>
-				<van-empty image="network" description="服务器异常" />
+				<slot name="network">
+					<van-empty :image="networkImage" :description="networkTip" />
+				</slot>
 			</template>
 			<template #finished v-if="list.length === 0">
-				<van-empty description="暂无数据" />
+				<slot name="empty">
+					<van-empty :image="emptyImage" :description="emptyTip" />
+				</slot>
 			</template>
 		</van-list>
 	</van-pull-refresh>
@@ -53,6 +57,31 @@
 			pageSize: {
 				type: Number,
 				default: 10,
+			},
+			// 网络异常
+			networkTip: {
+				type: String,
+				default: '网络异常',
+			},
+			// 网络异常展位图
+			networkImage: {
+				type: String,
+				default: 'network',
+			},
+			// 暂无数据
+			emptyTip: {
+				type: String,
+				default: '暂无数据',
+			},
+			// 暂无数据占位图
+			emptyImage: {
+				type: String,
+				default: '',
+			},
+			// 数据加载完底部tip
+			finishedText: {
+				type: String,
+				default: '没有更多了',
 			},
 		},
 		setup(ctx: any) {

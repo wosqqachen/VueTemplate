@@ -1,6 +1,6 @@
 <template>
 	<van-popup position="bottom" :style="{ height: '100%' }" @closed="animateEnd()" v-model:show="state.dialogVisible" safe-area-inset-top safe-area-inset-bottom transition-appear close-on-popstate>
-		<van-nav-bar fixed placeholder :title="title || '协议'" left-text="返回" left-arrow @click-left="state.dialogVisible = false" />
+		<van-nav-bar fixed placeholder :title="state.title || '协议'" left-text="返回" left-arrow @click-left="state.dialogVisible = false" />
 		<div :id="id" class="paction"></div>
 	</van-popup>
 </template>
@@ -25,11 +25,13 @@
 			let state = reactive({
 				dialogVisible: ctx.dialogVisible,
 				url: ctx.url,
+				title: ctx.title,
 			});
 
-			let open = ({ url }) => {
+			let open = ({ url, title }) => {
 				state.dialogVisible = true;
 				state.url = url;
+				state.title = title;
 			};
 
 			let animateEnd = () => {

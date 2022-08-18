@@ -5,7 +5,6 @@
 	import { uploadApi } from '@/api';
 	import { mobileFormat, cardFormat, bankCardFormat } from '@/utils';
 	import { noNumericToBlank, patternMobile, patternSMs, isMobile, isCard } from '@/utils/regularExp';
-	import { Toast } from 'vant';
 	import { defineComponent, reactive } from 'vue';
 
 	export default defineComponent({
@@ -70,13 +69,10 @@
 						type: 'tel',
 						formatter: noNumericToBlank,
 						placeholder: '请输入验证码',
+						beforeValidateKey: ['mobilePhone'],
 						key: 'smsCode',
-						handlerCountdown: (countdown, formModel) => {
-							if (isMobile(formModel['mobilePhone'])) {
-								countdown();
-							} else {
-								Toast('请输入合法的11位手机号');
-							}
+						handlerCountdown: countdown => {
+							countdown();
 						},
 						maxlength: 6,
 						rules: [{ pattern: patternSMs, message: '请输入6位数字验证码' }],

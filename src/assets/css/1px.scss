@@ -1,33 +1,33 @@
-.h-l-1px {
-  position: relative;
-  &:before {
-    @include h-1px($border-color, left);
-  }
+.h-l-1 {
+	position: relative;
+	&:before {
+		@include h-1($border-color, left);
+	}
 }
 
-.h-r-1px {
-  position: relative;
-  &:before {
-    @include h-1px($border-color, right);
-  }
+.h-r-1 {
+	position: relative;
+	&:before {
+		@include h-1($border-color, right);
+	}
 }
-.h-t-1px {
-  position: relative;
-  &:before {
-    @include h-1px($border-color, top);
-  }
-}
-
-.h-b-1px {
-  position: relative;
-  &:before {
-    @include h-1px($border-color, bottom);
-  }
+.h-t-1 {
+	position: relative;
+	&:before {
+		@include h-1($border-color, top);
+	}
 }
 
-.h-1px {
-  position: relative;
-  &:before {
-    @include h-all-1px($border-color, 0);
-  }
+.h-b-1 {
+	position: relative;
+	&:before {
+		@include h-1($border-color, bottom);
+	}
+}
+
+.h-1 {
+	position: relative;
+	&:before {
+		@include h-all-1($border-color, 0);
+	}
 }

@@ -10,7 +10,7 @@ npm install
 npm run serve
 ```
 
-### 启动mock服务
+### start mock service
 ```
 npm run mock
 ```

@@ -1,32 +1,6 @@
 // 覆盖van css
 body {
-	--van-cell-text-color: #1a1a1a; // 标题颜色
-	--van-cell-font-size: 32px; // 标题文字
-	--van-cell-icon-size: 32px; // 右箭头大小
-	--van-cell-right-icon-color: #d2d2d2; // 右箭头颜色
 	--van-cell-horizontal-padding: 48px; // 左右边距
-	--van-button-default-height: 114px;
-	--van-button-primary-background-color: linear-gradient(134deg, #c58cff 0%, #8f76ff 100%);
-	--van-button-primary-border-color: 0;
-	--van-button-normal-font-size: 40px;
-	--van-button-disabled-opacity: 1;
-	--van-field-input-text-color: rgba(0, 0, 0, 0.6);
-	--van-field-placeholder-text-color: rgba(0, 0, 0, 0.16);
-	--van-field-error-message-color: rgba(255, 0, 0, 1);
-	--van-dialog-border-radius: 24px;
-	--van-dialog-header-padding-top: 40px;
-	--van-dialog-font-size: 36px;
-	--van-dialog-header-font-weight: 400;
-	--van-slider-active-background-color: #8a38f5;
-	--van-switch-on-background-color: #8a38f5;
-	--van-rate-icon-full-color: #8a38f5;
-	--van-checkbox-checked-icon-color: #8a38f5;
-	--van-radio-checked-icon-color: #8a38f5;
-	--van-tabs-bottom-bar-color: #8a38f5;
-}
-.van-button--primary.van-button--disabled {
-	background: #dbdbdb;
-	color: #8d8d8d;
 }
 .van-cell:after {
 	left: 48px;
@@ -83,7 +57,7 @@ textarea:-ms-input-placeholder {
 		padding-bottom: 20px;
 	}
 	.van-dialog__confirm {
-		background: linear-gradient(134deg, #c58cff 0%, #8f76ff 100%);
+		background: $primary-color;
 		margin-left: 20px;
 		color: #fff;
 		font-weight: bold;
