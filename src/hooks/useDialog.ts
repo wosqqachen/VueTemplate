@@ -6,7 +6,11 @@ type dialogProps = {
 	confirm?: () => Promise<void>;
 };
 
-export const useDialog = ({ title, showCancelButton = false, confirm }: dialogProps) => {
+export const useDialog = ({
+	title,
+	showCancelButton = false,
+	confirm,
+}: dialogProps) => {
 	let loading = false;
 	Dialog({
 		className: 'bc-dialog',

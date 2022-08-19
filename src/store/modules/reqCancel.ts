@@ -1,4 +1,9 @@
-import { CREQCANCEL_SET_ACTION, REQCANCEL_REMOVE, REQCANCEL_REMOVE_ACTION, REQCANCEL_SET } from './../../utils/Const';
+import {
+	CREQCANCEL_SET_ACTION,
+	REQCANCEL_REMOVE,
+	REQCANCEL_REMOVE_ACTION,
+	REQCANCEL_SET,
+} from './../../utils/Const';
 import { IReqCancelState, IRootState } from './../types';
 import { Module } from 'vuex';
 import type { Canceler } from 'axios';

@@ -3,7 +3,12 @@
 	{{ $t('upload') }}
 	<van-button @click="changeLang('zh')">切换中文</van-button>
 	<van-button @click="changeLang('en')">语言英文</van-button>
-	<bc-multi-text :disabledExpand="false">You have yourYou have youYou have youYou havYou have yourYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have youYou have you Donut community. Now paaagggg Donut ces11</bc-multi-text>
+	<bc-multi-text :disabledExpand="false">
+		You have yourYou have youYou have youYou havYou have yourYou have youYou
+		have youYou have youYou have youYou have youYou have youYou have youYou have
+		youYou have youYou have youYou have youYou have you Donut community. Now
+		paaagggg Donut ces11
+	</bc-multi-text>
 
 	<van-tabs v-model:active="active">
 		<van-tab title="表单组件"></van-tab>
@@ -36,7 +41,8 @@
 			const active = ref(0);
 			const changeLang = lang => {
 				useDialog({
-					title: '如果解决方法是丑陋的，那就肯定还有更好的解决方法，只是还没有发现而已。',
+					title:
+						'如果解决方法是丑陋的，那就肯定还有更好的解决方法，只是还没有发现而已。',
 					showCancelButton: true,
 					confirm: () => {
 						return new Promise((resolve, reason) => {

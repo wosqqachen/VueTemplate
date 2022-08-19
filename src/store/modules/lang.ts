@@ -19,7 +19,10 @@ const lang: Module<IlangState, IRootState> = {
 		},
 	},
 	actions: {
-		[LANG_SET_ACTION]({ commit }: ActionContext<IlangState, IRootState>, payload: 'zh' | 'en'): void {
+		[LANG_SET_ACTION](
+			{ commit }: ActionContext<IlangState, IRootState>,
+			payload: 'zh' | 'en'
+		): void {
 			commit(LANG_SET, payload);
 		},
 	},

@@ -1,5 +1,11 @@
 <template>
-	<count-to :start-val="Number(start)" :end-val="Number(endVal)" :duration="Number(duration)" :decimals="Number(decimals)" :suffix="suffix"></count-to>
+	<count-to
+		:start-val="Number(start)"
+		:end-val="Number(endVal)"
+		:duration="Number(duration)"
+		:decimals="Number(decimals)"
+		:suffix="suffix"
+	></count-to>
 </template>
 <script lang="ts">
 	import { defineComponent, ref, watch } from 'vue';

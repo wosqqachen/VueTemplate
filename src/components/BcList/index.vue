@@ -1,6 +1,15 @@
 <template>
-	<van-pull-refresh v-model="refreshing" @refresh="onLoad({ isResetPageNumber: true })">
-		<van-list v-model:loading="loading" v-model:error="error" :finished="finished" :finished-text="finishedText" @load="onLoad">
+	<van-pull-refresh
+		v-model="refreshing"
+		@refresh="onLoad({ isResetPageNumber: true })"
+	>
+		<van-list
+			v-model:loading="loading"
+			v-model:error="error"
+			:finished="finished"
+			:finished-text="finishedText"
+			@load="onLoad"
+		>
 			<template v-for="row in list">
 				<slot name="data" :row="row"></slot>
 			</template>
@@ -111,7 +120,13 @@
 					// 过滤空数据
 					let queryParams = {};
 					Object.keys(ctx.queryParams).forEach(key => {
-						if (ctx.queryParams[key] !== '' && ctx.queryParams[key] !== 'null' && ctx.queryParams[key] !== 'undefined' && ctx.queryParams[key] !== null && ctx.queryParams[key] !== undefined) {
+						if (
+							ctx.queryParams[key] !== '' &&
+							ctx.queryParams[key] !== 'null' &&
+							ctx.queryParams[key] !== 'undefined' &&
+							ctx.queryParams[key] !== null &&
+							ctx.queryParams[key] !== undefined
+						) {
 							queryParams[key] = ctx.queryParams[key];
 						}
 					});

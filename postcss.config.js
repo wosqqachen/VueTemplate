@@ -1,7 +1,9 @@
 const path = require('path');
 module.exports = ({ file }) => {
 	// vant 是按照375的尺寸
-	const designWidth = file.includes(path.join('node_modules', 'vant')) ? 375 : 750;
+	const designWidth = file.includes(path.join('node_modules', 'vant'))
+		? 375
+		: 750;
 	return {
 		plugins: {
 			'postcss-import': {},
@@ -25,7 +27,12 @@ module.exports = ({ file }) => {
 				// exclude: /(\/|\\)(node_modules)(\/|\\)/, // 排除node_modules文件中第三方css文件
 			},
 			'postcss-viewport-units': {
-				filterRule: rule => rule.selector.indexOf('::after') === -1 && rule.selector.indexOf('::before') === -1 && rule.selector.indexOf(':after') === -1 && rule.selector.indexOf(':before') === -1 && rule.nodes.findIndex(i => i.prop === 'content') === -1,
+				filterRule: rule =>
+					rule.selector.indexOf('::after') === -1 &&
+					rule.selector.indexOf('::before') === -1 &&
+					rule.selector.indexOf(':after') === -1 &&
+					rule.selector.indexOf(':before') === -1 &&
+					rule.nodes.findIndex(i => i.prop === 'content') === -1,
 			},
 			cssnano: {
 				'cssnano-preset-advanced': {

@@ -1,5 +1,11 @@
 import { Module, ActionContext } from 'vuex';
-import { USER_INFO_GET, USER_INFO_SET, USER_INFO_REMOVE, USER_INFO_SET_ACTION, USER_INFO_REMOVE_ACTION } from './../../utils/Const';
+import {
+	USER_INFO_GET,
+	USER_INFO_SET,
+	USER_INFO_REMOVE,
+	USER_INFO_SET_ACTION,
+	USER_INFO_REMOVE_ACTION,
+} from './../../utils/Const';
 import { IUserInfoState, IRootState } from '../types';
 import { deepStateCopy, deleteStateKeys } from '@/utils';
 
@@ -23,10 +29,15 @@ const userInfo: Module<IUserInfoState, IRootState> = {
 		},
 	},
 	actions: {
-		[USER_INFO_SET_ACTION]({ commit }: ActionContext<IUserInfoState, IRootState>, payload: IUserInfoState): void {
+		[USER_INFO_SET_ACTION](
+			{ commit }: ActionContext<IUserInfoState, IRootState>,
+			payload: IUserInfoState
+		): void {
 			commit(USER_INFO_SET, payload);
 		},
-		[USER_INFO_REMOVE_ACTION]({ commit }: ActionContext<IUserInfoState, IRootState>): void {
+		[USER_INFO_REMOVE_ACTION]({
+			commit,
+		}: ActionContext<IUserInfoState, IRootState>): void {
 			commit(USER_INFO_REMOVE);
 		},
 	},

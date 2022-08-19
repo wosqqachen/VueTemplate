@@ -1,7 +1,8 @@
 const { defineConfig } = require('@vue/cli-service');
 const { VantResolver } = require('unplugin-vue-components/resolvers');
 const ComponentsPlugin = require('unplugin-vue-components/webpack');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin =
+	require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // const path = require('path');
 // const resolve = dir => path.join(__dirname, dir);
 

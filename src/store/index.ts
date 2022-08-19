@@ -1,6 +1,11 @@
 import { storageGet, storageSet } from './../utils/Storage';
 import { InjectionKey } from 'vue';
-import { createStore, useStore as baseUseStore, Store, createLogger } from 'vuex';
+import {
+	createStore,
+	useStore as baseUseStore,
+	Store,
+	createLogger,
+} from 'vuex';
 import { IRootState } from './types';
 import { VUEX_STATE } from '@/utils/Const';
 import { AutoInjectModule } from '@/utils';

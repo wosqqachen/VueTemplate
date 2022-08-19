@@ -1,4 +1,8 @@
-import { COMMON_PARAMS_GET, COMMON_PARAMS_SET, COMMON_PARAMS_SET_ACTION } from './../../utils/Const';
+import {
+	COMMON_PARAMS_GET,
+	COMMON_PARAMS_SET,
+	COMMON_PARAMS_SET_ACTION,
+} from './../../utils/Const';
 
 import { Module, ActionContext } from 'vuex';
 import { IRootState, ICommonParamsState } from './../types';
@@ -14,12 +18,18 @@ const commonParams: Module<ICommonParamsState, IRootState> = {
 		},
 	},
 	mutations: {
-		[COMMON_PARAMS_SET](state: ICommonParamsState, payload: ICommonParamsState): void {
+		[COMMON_PARAMS_SET](
+			state: ICommonParamsState,
+			payload: ICommonParamsState
+		): void {
 			state = payload;
 		},
 	},
 	actions: {
-		[COMMON_PARAMS_SET_ACTION]({ commit }: ActionContext<ICommonParamsState, IRootState>, payload: ICommonParamsState): void {
+		[COMMON_PARAMS_SET_ACTION](
+			{ commit }: ActionContext<ICommonParamsState, IRootState>,
+			payload: ICommonParamsState
+		): void {
 			commit(COMMON_PARAMS_SET, payload);
 		},
 	},

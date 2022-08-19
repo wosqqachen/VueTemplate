@@ -1,6 +1,6 @@
 import BcList from '@/components/BcList/index.vue';
 import BcForm from '@/components/BcForm/index.vue';
-import BcDigitalAnimation from '@/components/BcDigitalAnimation.vue';
+import BcDigitalAnimation from '@/components/BcDigitalAnimation/index.vue';
 import BcPaction from '@/components/BcPaction/index.vue';
 import BcMultiText from '@/components/BcMultiText/index.vue';
 declare module 'vue' {

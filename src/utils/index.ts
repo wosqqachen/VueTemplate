@@ -6,7 +6,14 @@ interface IThousandsProps {
 	prefix?: string; // 前缀
 	suffix?: string; // 后缀
 }
-export function thousands({ num, decimals = 0, decimal = '.', separator = ',', prefix = '', suffix = '' }: IThousandsProps = {}): string {
+export function thousands({
+	num,
+	decimals = 0,
+	decimal = '.',
+	separator = ',',
+	prefix = '',
+	suffix = '',
+}: IThousandsProps = {}): string {
 	if ((num as number) <= 0) {
 		return '0.00';
 	}
@@ -64,13 +71,21 @@ export const deleteStateKeys = state => {
 // 手机号输入格式化
 export const mobileFormat = mobileStr => {
 	const inputMobile = mobileStr.replace(/\s|\D/gi, '');
-	return /(\d{3})?(\d{1,4})?(\d{1,4})?/.exec(inputMobile)?.slice(1, 4).join(' ').trim();
+	return /(\d{3})?(\d{1,4})?(\d{1,4})?/
+		.exec(inputMobile)
+		?.slice(1, 4)
+		.join(' ')
+		.trim();
 };
 
 // 身份证输入格式化
 export const cardFormat = cardStr => {
 	const inputCard = cardStr.replace(/\s|\D/gi, '');
-	const cardNo = /(\d{6})?(\d{1,8})?(\d{1,4})?/.exec(inputCard)?.slice(1, 4).join(' ').trim();
+	const cardNo = /(\d{6})?(\d{1,8})?(\d{1,4})?/
+		.exec(inputCard)
+		?.slice(1, 4)
+		.join(' ')
+		.trim();
 	const x = cardStr[19];
 	return ['x', 'X'].includes(x) ? `${cardNo}${x}` : cardNo;
 };
@@ -78,7 +93,11 @@ export const cardFormat = cardStr => {
 // 银行卡输入格式化
 export const bankCardFormat = bankCardStr => {
 	const inputBankCardStr = bankCardStr.replace(/\s|\D/gi, '');
-	return /(\d{4})?(\d{1,4})?(\d{1,4})?(\d{1,4})?(\d{1,4})?/.exec(inputBankCardStr)?.slice(1, 6).join(' ').trim();
+	return /(\d{4})?(\d{1,4})?(\d{1,4})?(\d{1,4})?(\d{1,4})?/
+		.exec(inputBankCardStr)
+		?.slice(1, 6)
+		.join(' ')
+		.trim();
 };
 
 //获取browser类型
@@ -104,7 +123,11 @@ export const getBrowser = () => {
 };
 
 // 自动注入modules
-export const AutoInjectModule = (files, ignore: Array<string> = [], suffix: '.ts' | '.js' = '.ts') => {
+export const AutoInjectModule = (
+	files,
+	ignore: Array<string> = [],
+	suffix: '.ts' | '.js' = '.ts'
+) => {
 	const modules = {};
 	files.keys().forEach((key: string) => {
 		if (!ignore.some(item => key.includes(item))) {

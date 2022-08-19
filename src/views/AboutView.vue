@@ -5,8 +5,22 @@
 	<canvas id="canvas"></canvas>
 	<van-field v-model="username1" id="foo" label="用户名1" />
 	<van-field v-model="username2" id="foo1" label="用户名2" />
-	<van-button type="primary" block class="copy_button" data-clipboard-target="#foo">复制a</van-button>
-	<van-button type="primary" block class="copy_button" data-clipboard-target="#foo1">复制b</van-button>
+	<van-button
+		type="primary"
+		block
+		class="copy_button"
+		data-clipboard-target="#foo"
+	>
+		复制a
+	</van-button>
+	<van-button
+		type="primary"
+		block
+		class="copy_button"
+		data-clipboard-target="#foo1"
+	>
+		复制b
+	</van-button>
 </template>
 <script lang="ts">
 	import { useClipboard, useQrcode } from '@/hooks';

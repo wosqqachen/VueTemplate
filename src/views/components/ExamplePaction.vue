@@ -1,5 +1,7 @@
 <template>
-	<van-button type="primary" @click="handler(1)" class="mr-1">打开协议方式一</van-button>
+	<van-button type="primary" @click="handler(1)" class="mr-1">
+		打开协议方式一
+	</van-button>
 	<van-button type="success" @click="handler(2)">打开协议方式二</van-button>
 	<bc-paction ref="bcPaction"></bc-paction>
 </template>

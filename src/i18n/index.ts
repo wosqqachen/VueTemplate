@@ -2,7 +2,9 @@ import store from '@/store';
 import { AutoInjectModule } from '@/utils';
 import { createI18n } from 'vue-i18n';
 
-export const I18nMessages = AutoInjectModule(require.context('./lang', true, /\.ts$/));
+export const I18nMessages = AutoInjectModule(
+	require.context('./lang', true, /\.ts$/)
+);
 
 const i18n = createI18n({
 	// 使用 Composition API 模式，则需要将其设置为false

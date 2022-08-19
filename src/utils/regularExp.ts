@@ -13,7 +13,8 @@ export const isSMs = (value: string): boolean => {
 // 非纯数字
 export const patternNumber = /\D+/g;
 // 非数字替换为空
-export const noNumericToBlank = (value: string): string => value.replace(patternNumber, '');
+export const noNumericToBlank = (value: string): string =>
+	value.replace(patternNumber, '');
 
 // 身份证号
 export const patternCard = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{2})(\d)(\d|X|x)$/;

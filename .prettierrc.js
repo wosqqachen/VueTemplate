@@ -5,7 +5,7 @@ module.exports = {
 	htmlWhitespaceSensitivity: 'ignore',
 	jsxBracketSameLine: false, // 在jsx中把'>' 是否单独放一行
 	jsxSingleQuote: true, // 在jsx中使用单引号代替双引号
-	printWidth: 1000, // 超过最大值换行
+	// printWidth: 1000, // 超过最大值换行
 	proseWrap: 'preserve', // 默认值。因为使用了一些折行敏感型的渲染器（如GitHub comment）而按照markdown文本样式进行折行
 	semi: true, // 句尾添加分号
 	singleQuote: true, // 使用单引号代替双引号

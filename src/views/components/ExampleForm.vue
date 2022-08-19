@@ -4,7 +4,13 @@
 <script lang="ts">
 	import { uploadApi } from '@/api';
 	import { mobileFormat, cardFormat, bankCardFormat } from '@/utils';
-	import { noNumericToBlank, patternMobile, patternSMs, isMobile, isCard } from '@/utils/regularExp';
+	import {
+		noNumericToBlank,
+		patternMobile,
+		patternSMs,
+		isMobile,
+		isCard,
+	} from '@/utils/regularExp';
 	import { defineComponent, reactive } from 'vue';
 
 	export default defineComponent({
@@ -31,7 +37,9 @@
 						key: 'mobilePhone',
 						maxlength: 11,
 						formatter: noNumericToBlank,
-						rules: [{ pattern: patternMobile, message: '请输入合法的11位手机号' }],
+						rules: [
+							{ pattern: patternMobile, message: '请输入合法的11位手机号' },
+						],
 					},
 					{
 						componentType: 'text',
@@ -41,7 +49,13 @@
 						key: 'mobilePhonef',
 						formatter: mobileFormat,
 						maxlength: 13,
-						rules: [{ validator: (value: string) => isMobile(value.replace(/\s/gi, '')), message: '请输入合法的11位手机号-格式化' }],
+						rules: [
+							{
+								validator: (value: string) =>
+									isMobile(value.replace(/\s/gi, '')),
+								message: '请输入合法的11位手机号-格式化',
+							},
+						],
 					},
 					{
 						componentType: 'text',
@@ -51,7 +65,12 @@
 						key: 'card',
 						formatter: cardFormat,
 						maxlength: 20,
-						rules: [{ validator: (value: string) => isCard(value.replace(/\s/gi, '')), message: '请输入合法18位身份证号' }],
+						rules: [
+							{
+								validator: (value: string) => isCard(value.replace(/\s/gi, '')),
+								message: '请输入合法18位身份证号',
+							},
+						],
 					},
 					{
 						componentType: 'text',
@@ -145,7 +164,11 @@
 						label: '选择城市',
 						placeholder: '选择城市',
 						key: 'select',
-						confirmCallback: (optionValue: any, optionData: any, formModels: any) => {
+						confirmCallback: (
+							optionValue: any,
+							optionData: any,
+							formModels: any
+						) => {
 							console.log(optionValue);
 							console.log(optionData);
 							console.log(formModels);
