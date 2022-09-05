@@ -3,16 +3,17 @@
 </template>
 <script lang="ts">
 	import { uploadApi } from '@/api';
-	import { mobileFormat, cardFormat, bankCardFormat } from '@/utils';
+	import { defineComponent, reactive } from 'vue';
 	import {
+		bankCardFormat,
+		cardFormat,
+		isCard,
+		isMobile,
+		mobileFormat,
 		noNumericToBlank,
 		patternMobile,
 		patternSMs,
-		isMobile,
-		isCard,
-	} from '@/utils/regularExp';
-	import { defineComponent, reactive } from 'vue';
-
+	} from '@fe-hl/utils';
 	export default defineComponent({
 		name: 'ExampleForm',
 		setup() {

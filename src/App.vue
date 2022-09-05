@@ -8,10 +8,10 @@
 	</router-view>
 </template>
 <script lang="ts">
+	import { storageGet, storageDeleteKey } from '@fe-hl/utils';
 	import { defineComponent, ref, watch } from 'vue';
 	import router from './router';
 	import { BACK } from './utils/Const';
-	import { storageDelete, storageGet } from './utils/Storage';
 	export default defineComponent({
 		setup() {
 			let animation = ref('slide-left');
@@ -23,7 +23,7 @@
 					} else {
 						animation.value = 'slide-left';
 					}
-					Promise.resolve().then(() => storageDelete(BACK));
+					Promise.resolve().then(() => storageDeleteKey(BACK));
 				}
 			);
 			return { animation };

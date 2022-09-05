@@ -216,8 +216,8 @@
 		getCurrentInstance,
 	} from 'vue';
 	import { Toast } from 'vant';
-	import DateFormat from '@/utils/DateFormat';
 	import { useCountDown } from '@/hooks/index';
+	import { dateFormat as dateFormats } from '@fe-hl/utils';
 
 	type OptionsType = {
 		label: string;
@@ -309,6 +309,7 @@
 
 			let init = () => {
 				ctx.formConfigList.forEach(item => {
+					item.type = '';
 					// 默认值
 					if (item.componentType === 'switch') {
 						formModels[item.key] =
@@ -368,12 +369,12 @@
 					let dateStr;
 					if (Array.isArray(payload)) {
 						const [start, end] = payload;
-						dateStr = `${DateFormat.dateFormat(
-							start,
+						dateStr = `${dateFormats(start, dateFormat)} / ${dateFormats(
+							end,
 							dateFormat
-						)} / ${DateFormat.dateFormat(end, dateFormat)}`;
+						)}`;
 					} else {
-						dateStr = DateFormat.dateFormat(payload, dateFormat);
+						dateStr = dateFormats(payload, dateFormat);
 					}
 					formModels[key] = dateStr;
 				} else {

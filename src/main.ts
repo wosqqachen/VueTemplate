@@ -9,7 +9,7 @@ import 'vant/lib/index.css';
 import '@/assets/css/index.scss';
 import './permission';
 import './utils/jsbridge';
-import { queryUrlParams, loadScript } from './utils/index';
+import { loadScript, queryUrlParams } from '@fe-hl/utils';
 
 const UrlParams = queryUrlParams();
 const app = createApp(App);

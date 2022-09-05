@@ -1,4 +1,5 @@
-import { getBrowser } from './index';
+import { getBrowser } from '@fe-hl/utils';
+
 const { android: isAndroid, ios: isIos } = getBrowser();
 function setupWebViewJavascriptBridge(callback) {
 	// Android

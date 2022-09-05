@@ -1,4 +1,3 @@
-import { storageGet, storageSet } from './../utils/Storage';
 import { InjectionKey } from 'vue';
 import {
 	createStore,
@@ -9,6 +8,7 @@ import {
 import { IRootState } from './types';
 import { VUEX_STATE } from '@/utils/Const';
 import { AutoInjectModule } from '@/utils';
+import { storageGet, storageSet } from '@fe-hl/utils';
 
 export const key: InjectionKey<Store<IRootState>> = Symbol();
 

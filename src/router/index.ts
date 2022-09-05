@@ -1,5 +1,5 @@
 import { BACK } from '@/utils/Const';
-import { storageSet } from '@/utils/Storage';
+import { storageSet } from '@fe-hl/utils';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
 const routes: Array<RouteRecordRaw> = [
