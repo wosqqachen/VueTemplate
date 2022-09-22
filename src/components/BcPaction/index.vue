@@ -105,6 +105,7 @@
 		.docx {
 			width: auto !important;
 			padding: 0 !important;
+			min-height: auto !important;
 		}
 		.docx-wrapper > section.docx {
 			box-shadow: none !important;
