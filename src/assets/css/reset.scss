@@ -90,8 +90,12 @@ video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif, 'vant-icon';
 }
+body {
+	font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑',
+		Arial, sans-serif, 'vant-icon' !important;
+}
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -150,7 +154,7 @@ table {
 /*IOS下，input 和textarea表单默认会有个内阴影*/
 input,
 textarea {
-	-webkit-appearance: none;
+	appearance: none;
 }
 /**
  * Remove default margin.
@@ -160,6 +164,4 @@ textarea {
 img {
 	content: normal !important;
 }
-.van-list {
-	min-height: calc(100vh) !important;
-}
+

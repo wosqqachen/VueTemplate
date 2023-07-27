@@ -7,7 +7,8 @@ $text-main-color: #1a1a1a; // 主文本色
 $text-secondary-color: #8d8d8d; // 次文本色
 $text-link-color: #8a38f5; // 链接色
 
-$title-color: #1f1f1f; // 标题色
+$title-color: #1f1f1f; // 主标题色
+$subtitle-color: #1f1f1f; // 副标题色
 
 // 背景色
 $bg-primary: #a261ff;
@@ -26,7 +27,7 @@ $v-spacing-lg: 40px;
 
 // 字体尺寸
 $font-size-sm: 28px;
-$font-size-md: 35px;
+$font-size-md: 32px;
 $font-size-lg: 40px;
 
 // 圆角尺寸
@@ -36,7 +37,7 @@ $radius-lg: 10px;
 $radius-circle: 50%;
 
 // 三角形尺寸
-$arrow-sm: 15px;
+$arrow-sm: 12px;
 $arrow-md: 20px;
 $arrow-lg: 25px;
 
@@ -45,7 +46,7 @@ $border-width-sm: 1px;
 $border-width-md: 2px;
 $border-width-lg: 3px;
 // 边框颜色
-$border-color: #dcdee0; // 默认
+$border-color: #dfdfdf; // 默认
 $border-color-secondary: #ccc; // 次色
 $border-color-activate: $primary-color; // 激活
 

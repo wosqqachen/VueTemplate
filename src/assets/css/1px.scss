@@ -1,33 +1,33 @@
 .h-l-1 {
 	position: relative;
 	&:before {
-		@include h-1($border-color, left);
+		@include h-1px($border-color, left);
 	}
 }
 
 .h-r-1 {
 	position: relative;
 	&:before {
-		@include h-1($border-color, right);
+		@include h-1px($border-color, right);
 	}
 }
 .h-t-1 {
 	position: relative;
 	&:before {
-		@include h-1($border-color, top);
+		@include h-1px($border-color, top);
 	}
 }
 
 .h-b-1 {
 	position: relative;
 	&:before {
-		@include h-1($border-color, bottom);
+		@include h-1px($border-color, bottom);
 	}
 }
 
 .h-1 {
 	position: relative;
 	&:before {
-		@include h-all-1($border-color, 0);
+		@include h-all-1px($border-color, 0);
 	}
 }

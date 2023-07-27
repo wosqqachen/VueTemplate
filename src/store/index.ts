@@ -1,35 +1,50 @@
-import { InjectionKey } from 'vue';
-import {
-	createStore,
-	useStore as baseUseStore,
-	Store,
-	createLogger,
-} from 'vuex';
-import { IRootState } from './types';
-import { VUEX_STATE } from '@/utils/Const';
-import { AutoInjectModule } from '@/utils';
-import { storageGet, storageSet } from '@fe-hl/utils';
+import { InjectionKey, toRaw } from 'vue';
+import { createStore, Store, useStore as baseUseStore } from 'vuex';
+import userModule, { UserInfo } from './user';
+import cancelReqModule, { CancelReq } from './cancelReq';
+import languageModule, { Language } from './language';
+import themeModule, { Theme } from './theme';
+import { STORAGE, storageGet, storageSet } from '@fe-hl/shared';
 
-export const key: InjectionKey<Store<IRootState>> = Symbol();
-
-function customPlugin(store) {
-	const local = storageGet(VUEX_STATE);
-	if (local) {
-		store.replaceState(local);
-	}
-	store.subscribe((mutation, state) => {
-		storageSet(VUEX_STATE, state);
-	});
+export interface RootState {
+  user: UserInfo;
+  cancelReq: CancelReq;
+  language: Language;
+  theme: Theme;
 }
 
-// 自动注入modules
-export default createStore<IRootState>({
-	modules: AutoInjectModule(require.context('./modules', true, /\.ts$/)),
-	plugins: [createLogger(), customPlugin],
-	strict: true,
-	devtools: process.env.NODE_ENV !== 'production',
+export const key: InjectionKey<Store<RootState>> = Symbol();
+
+function createPersistedState(store: Store<RootState>) {
+  try {
+    const persistedState = storageGet('PERSISTED-VUEX', STORAGE.LOCAL);
+    if (persistedState) {
+      store.replaceState({
+        ...toRaw(store.state),
+        ...(persistedState as object),
+      });
+    }
+    store.subscribe((_mutationPayload, state: RootState) => {
+      const rootState = JSON.stringify(state, (key, value) => {
+        return key === 'cancelReq' ? undefined : value;
+      });
+      storageSet('PERSISTED-VUEX', JSON.parse(rootState), STORAGE.LOCAL);
+    });
+  } catch (error) {
+    console.log('PersistedState', error);
+  }
+}
+
+export const store = createStore<RootState>({
+  modules: {
+    user: userModule,
+    cancelReq: cancelReqModule,
+    language: languageModule,
+    theme: themeModule,
+  },
+  plugins: [createPersistedState],
 });
 
 export function useStore() {
-	return baseUseStore(key);
+  return baseUseStore(key);
 }

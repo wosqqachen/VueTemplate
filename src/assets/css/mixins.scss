@@ -1,6 +1,6 @@
 // border 1px
-@mixin h-1($color, $direction) {
-	content: '';
+@mixin h-1px($color, $direction) {
+	content: "";
 	position: absolute;
 	color: $color;
 
@@ -45,8 +45,8 @@
 	}
 }
 
-@mixin h-all-1($color, $radius) {
-	content: '';
+@mixin h-all-1px($color, $radius) {
+	content: "";
 	position: absolute;
 	left: 0;
 	top: 0;

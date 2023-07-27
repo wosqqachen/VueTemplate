@@ -1,0 +1,12 @@
+/* 默认值：白色：light */
+:root {
+	--theme-bg-color: #fff;
+  --theme-text-color: #000;
+}
+
+/* 暗黑：dark */
+[data-theme='dark'] {
+	--theme-bg-color: #000;
+  --theme-text-color: #fff;
+}
+

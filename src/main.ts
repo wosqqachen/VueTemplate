@@ -1,26 +1,20 @@
 import { createApp } from 'vue';
-import i18n from '@/i18n';
-import App from './App.vue';
-import './registerServiceWorker';
+
+import { store, key } from './store';
 import router from './router';
-import store, { key } from './store';
-import globalComponent from './plugins/globalComponent';
-import 'vant/lib/index.css';
+import App from './App.vue';
 import '@/assets/css/index.scss';
+import 'vant/lib/index.css';
 import './permission';
-import './utils/jsbridge';
-import { loadScript, queryUrlParams } from '@fe-hl/utils';
-
-const UrlParams = queryUrlParams();
-const app = createApp(App);
-
-app.use(store, key);
-app.use(router);
-app.use(i18n);
-app.use(globalComponent);
-app.mount('#app');
-if (UrlParams.debugger === 'debugger') {
-	loadScript(`${location.origin + location.pathname}/vconsole.min.js`, () => {
-		new window['VConsole']();
-	});
+import i18n from './locales';
+import 'virtual:svg-icons-register';
+import { queryUrlParams, loadScript } from '@fe-hl/shared';
+createApp(App).use(i18n).use(router).use(store, key).mount('#app');
+if (queryUrlParams().debugger == 'debugger') {
+  loadScript(
+    `${location.origin + import.meta.env.VITE_API_BASE_URL}/vconsole.min.js`,
+    () => {
+      new window['VConsole']();
+    },
+  );
 }
