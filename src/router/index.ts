@@ -11,7 +11,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/home',
     name: 'Home',
-    meta: { title: '首页', requireAuth: true },
+    meta: { title: '首页', requireAuth: false },
     component: () => import('../views/Home/index.vue'),
   },
   {
