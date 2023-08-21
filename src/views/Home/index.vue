@@ -30,12 +30,12 @@
   }
 
   .con {
-    width: 100%;
-    height: 748px;
+    width: 750px;
+    height: auto;
     box-sizing: border-box;
     background: #01ddcb;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     justify-content: space-between;
     align-items: center;
     padding: 15px 170px 15px 250px;
@@ -43,7 +43,7 @@
       width: 600px;
       font-family: Alimama ShuHeiTi;
       color: #ffffff;
-      margin-bottom: 250px;
+      margin-bottom: 150px;
       .txt1 {
         height: 100px;
         font-size: 52px;
@@ -64,7 +64,8 @@
       }
     }
     .right {
-      width: 780px;
+      width: 700px;
+      margin-bottom: 150px;
       display: flex;
       background-image: url('@/assets/img/bg1.png');
       background-position: center;
