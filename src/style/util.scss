@@ -1,0 +1,227 @@
+// 居中
+.center {
+  // 父元素：position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.poxcenter {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// 蒙层
+.mask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10;
+  .contain {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .close {
+      position: absolute;
+      display: block;
+      top: 0rem;
+      right: 0rem;
+    }
+  }
+}
+
+.grayscale {
+  filter: grayscale(100%);
+}
+
+.flex {
+  display: flex;
+  .item {
+    flex: 1;
+  }
+}
+
+.flexmiddle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.scaleanimate {
+  animation: scaleAnimation 1.2s infinite;
+  @keyframes scaleAnimation {
+    0% {
+      transform: translateX(-50%) scale(1);
+    }
+    50% {
+      transform: translateX(-50%) scale(0.9);
+    }
+    100% {
+      transform: translateX(-50%) scale(1);
+    }
+  }
+}
+
+.scaleanimate2 {
+  animation: scaleAnimation2 1.2s infinite;
+  @keyframes scaleAnimation2 {
+    0% {
+      transform: scale(1) translateZ(0);
+    }
+    50% {
+      transform: scale(0.9) translateZ(0);
+    }
+    100% {
+      transform: scale(1) translateZ(0);
+    }
+  }
+}
+
+.maskanimate {
+  animation: maskanimate ease-in-out 0.35s forwards;
+}
+.tipanimate {
+  animation: tipanimate ease-in-out 0.1s forwards;
+}
+@keyframes maskanimate {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4);
+    opacity: 0;
+  }
+  80% {
+    transform: translate(-50%, -50%) scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@keyframes tipanimate {
+  0% {
+    transform: translate(-50%, 0) scale(0.4);
+    opacity: 0;
+  }
+  80% {
+    transform: translate(-50%, 0) scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.roateloop {
+  animation: roateloop linear 4s infinite;
+  transform-origin: top;
+}
+@keyframes roateloop {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(6deg);
+  }
+  // 50% {
+  //   transform: rotate(0deg);
+  // }
+  75% {
+    transform: rotate(-6deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.roate360loop {
+  animation: roate360loop linear 6s infinite;
+}
+@keyframes roate360loop {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+  100% {
+    transform: rotate(360deg);
+    transform-origin: center;
+  }
+}
+
+.roate360loopTranslate {
+  animation: roate360loopTranslate linear 6s infinite;
+}
+@keyframes roate360loopTranslate {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+    transform-origin: center;
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+    transform-origin: center;
+  }
+}
+
+.handanimate {
+  animation: handanimate ease-in-out 6s;
+  transform-origin: top;
+}
+@keyframes handanimate {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+  100% {
+    transform: rotate(360deg);
+    transform-origin: center;
+  }
+}
+
+/**红包动画*/
+.shmoveanimate {
+  animation: shmove 2s 0s infinite;
+  transform-origin: center;
+}
+@keyframes shmove {
+  0%,
+  65% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  70% {
+    transform: translateX(-50%) rotate(22.5deg);
+  }
+  75% {
+    transform: translateX(-50%) rotate(-22.5deg);
+  }
+  80% {
+    transform: translateX(-50%) rotate(22.5deg);
+  }
+  85% {
+    transform: translateX(-50%) rotate(-22.5deg);
+  }
+  90% {
+    transform: translateX(-50%) rotate(22.5deg);
+  }
+  95% {
+    transform: translateX(-50%) rotate(-22.5deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+}
+
+.floatupdown {
+  animation: floatupdown 1.3s linear infinite alternate;
+}
+
+@keyframes floatupdown {
+  0% {
+    transform: translateY(-0.3rem);
+  }
+  100% {
+    transform: translateY(0.3rem);
+  }
+}
