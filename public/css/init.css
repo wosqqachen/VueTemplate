@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body,html{
+    height: 100%;
+    background: #F5F5F5;
+
+}
+html{
+    font-size: 5.21vw;
+    /* font-size: 10.25vw; */
+}
+body::-webkit-scrollbar {
+    display: none;
+    /* width: 0; */
+    /* z-index: 1; */
+    /* opacity: 1; */
+  }
+html::-webkit-scrollbar {
+    display: none;
+    /* width: 0; */
+    /* z-index: 1; */
+    /* opacity: 1; */
+  }
+  .el-diaLog::-webkit-scrollbar{
+    display: none;
+  }
+  .el-table__body-wrapper::-webkit-scrollbar ,.is-scrolling-left::-webkit-scrollbar{
+    /* display: none; */
+    /* overflow: hidden; */
+  }
+  .el-dialog__wrapper::-webkit-scrollbar{
+    display: none;
+    overflow: hidden;
+  }
+@font-face {
+    font-family: often;
+    src: url(../fonts/SOURCEHANSANSCN-REGULAR-2.OTF);
+}
+@font-face {
+    font-family: title;
+    src: url(../fonts/SOURCEHANSANSCN-BOLD-2.OTF);
+}
+@font-face {
+    font-family: mid;
+    src: url(../fonts/SOURCEHANSANSCN-MEDIUM-2.OTF);
+}
+ul{
+    list-style: none;
+}
+button{
+    border: none;
+}
+input{
+    border: .01rem solid #DDDDDD;
+    border-radius: .1rem;
+    height: .52rem;
+    width: 3.4rem;
+    box-sizing: border-box;
+    padding: .1rem;
+    font-size: .24rem;
+}
+
+input::-webkit-input-placeholder{
+    color: #AAAAAA;
+    font-size: .14rem;
+    font-family: often;
+}
+input:focus{
+    outline: none;
+}
+textarea{
+    resize: none;
+    width: 3.4rem;
+    height: 1.04rem;
+    /* margin-left: .2rem; */
+}
