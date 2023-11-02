@@ -1,14 +1,15 @@
 <template>
   <div class="slist">
-    <div class="title">{{ title }}</div>
-    <div class="htitle">
-      <div v-for="(item, index) in tableHead" :key="'kc' + index">{{ item }}</div>
-    </div>
+    <!-- <div class="title">{{ title }}</div> -->
     <div class="con">
-      <div class="item" v-for="(item, index) in tableData" :key="'kc' + index">
-        <div class="rank">{{ index + 1 }}</div>
-        <div class="name">{{ item.name }}</div>
-        <div class="num">{{ item.num }}</div>
+      <!-- <div class="btitle">产品名称显示位置</div>
+      <div class="txt">产品编码：20231020182564001</div>
+      <div class="txt">产品编码：20231020182564001</div> -->
+      <div class="dcon">
+        <img src="../images/d1.png" alt="" class="icon" />
+        <img src="../images/d2.png" alt="" class="icon active" />
+        <img src="../images/d3.png" alt="" class="icon" />
+        <div class="jb"></div>
       </div>
     </div>
   </div>
@@ -20,22 +21,8 @@ export default {
     title: {
       default: "每月统计"
     },
-    tableHead: {
-      default: ["排行", "名称", "数量量"]
-    },
-    tableData: {
-      default: [
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          num: 99
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          num: 99
-        }
-      ]
+    type: {
+      default: "1"
     }
   },
   data() {
@@ -43,3 +30,95 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.slist {
+  width: 508px;
+  height: 622px;
+  // background-image: url("../images/bg4.png");
+  .con {
+    height: 420px;
+  }
+  .btitle {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    margin: 15px auto;
+    text-align: left;
+    font-size: 30px;
+    font-family: Source Han Sans CN;
+    font-weight: bold;
+    font-style: italic;
+    color: #ffffff;
+    background: linear-gradient(180deg, #ffffff 40%, #95d6ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .txt {
+    position: relative;
+    height: 55px;
+    line-height: 55px;
+    text-align: left;
+    font-size: 18px;
+    font-family: Source Han Sans CN;
+    font-weight: 500;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 48px;
+    background: linear-gradient(180deg, #ffffff 50%, #95d6ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    &::before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      width: 40px;
+      height: 20px;
+      background-image: url("../images/i5.png");
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: contain;
+    }
+  }
+  .dcon {
+    width: 440px;
+    height: 68px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px auto;
+    padding: 0 105px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 2px solid rgba(246, 199, 56, 0.5);
+    position: relative;
+    .icon {
+      z-index: 2;
+    }
+    .jb {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      z-index: 4;
+      width: 400px;
+      height: 0px;
+      box-shadow: 17px 38px 22px 20px rgba(246, 199, 56, 0.65);
+    }
+    .red {
+      border: 2px solid rgba(246, 199, 56, 0.5);
+      .jb {
+        box-shadow: 17px 38px 22px 20px rgba(246, 199, 56, 0.65);
+      }
+    }
+    .green {
+      box-shadow: 17px 38px 22px 20px rgba(246, 199, 56, 0.65);
+    }
+    .yellow {
+      box-shadow: 17px 38px 22px 20px rgba(246, 199, 56, 0.65);
+    }
+    .active {
+      z-index: 5;
+    }
+  }
+}
+</style>

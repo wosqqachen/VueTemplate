@@ -1,7 +1,7 @@
 <template>
   <div class="dataScreen-container">
     <div ref="dataScreenRef" class="dataScreen">
-      <div class="dataScreen-header">
+      <div class="dataScreen-header" v-if="false">
         <div class="header-lf">
           <!-- <span class="header-screening" @click="router.push(HOME_URL)">首页</span> -->
         </div>
@@ -17,12 +17,11 @@
         </div>
       </div>
       <div class="dataScreen-main">
-        <StockTable></StockTable>
         <!-- 
-        <StockTable :title="商品统计"></StockTable> -->
+          <KStockTable></KStockTable>
         <BarChart />
-        <PieChart />
-        <RingChart />
+        <PieChart /> -->
+        <StockTable></StockTable>
         <StockBox />
         <!-- //第三步在template中使用并传入需要的数据 -->
         <!-- <demo-chart :chartData="chartData" width="300px" height="300px"></demo-chart> -->
@@ -127,6 +126,7 @@
 
 <script>
 import StockTable from "./components/StockTable.vue";
+import KStockTable from "./components/KStockTable.vue";
 import DemoChart from "./components/DemoChart.vue";
 import BarChart from "./components/BarChart.vue";
 import PieChart from "./components/PieChart.vue";
@@ -143,6 +143,7 @@ export default {
   },
   components: {
     StockTable,
+    KStockTable,
     StockBox,
     PieChart,
     BarChart,
@@ -195,4 +196,9 @@ export default {
 
 <style lang="scss">
 @import "./index.scss";
+.dataScreen {
+  // background: url("./images/bgp1.png") no-repeat;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 </style>

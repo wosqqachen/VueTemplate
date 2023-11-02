@@ -1,5 +1,8 @@
 <template>
-  <div id="chart2" class="card" style="width: 600px; height: 400px"></div>
+  <div class="slist">
+    <div class="title">{{ title }}</div>
+    <div id="chart2" class="card" style="width: 490px; height: 480px"></div>
+  </div>
 </template>
 
 <script>
@@ -8,6 +11,11 @@ import * as echarts from "echarts";
 require("echarts/theme/macarons"); // echarts theme
 
 export default {
+  props: {
+    title: {
+      default: "动态出入"
+    }
+  },
   mounted() {
     this.initChart();
   },
@@ -57,10 +65,10 @@ export default {
   }
 };
 </script>
-<style scoped lang="scss">
-.card {
-  width: 500px;
-  height: 500px;
-  background-color: #fff;
+<style lang="scss" scoped>
+.slist {
+  width: 508px;
+  height: 533px;
+  background-image: url("../images/bg2.png");
 }
 </style>
