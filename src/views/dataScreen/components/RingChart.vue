@@ -1,5 +1,5 @@
 <template>
-  <div id="ring" class="card" style="width: 600px; height: 400px"></div>
+  <div id="ring" class="ring" ></div>
 </template>
 
 <script>
@@ -36,14 +36,15 @@ export default {
       const chart = echarts.init(document.getElementById("ring"));
       const option = {
         title: {
-          text: "ECharts 饼图示例"
+          text: ""
         },
         legend: {
+          show:false,
           top: "bottom",
           lineStyle: { color: "#91cc75" }
         },
         toolbox: {
-          show: true,
+          show: false,
           feature: {
             mark: { show: true },
             dataView: { show: true, readOnly: false },
@@ -54,11 +55,11 @@ export default {
         series: [
           {
             type: "pie",
-            radius: [70, 90],
-            top: "15%",
+            radius: [60, 80],
+            top: "30%",
             height: "33.33%",
             left: "center",
-            width: 500,
+            width: 300,
             itemStyle: {
               borderColor: "#000",
               borderWidth: 0
@@ -68,10 +69,10 @@ export default {
               formatter: "{name|{b}}\n{time|{c} 小时}",
               minMargin: 5,
               edgeDistance: 10,
-              lineHeight: 15,
+              lineHeight: 25,
               rich: {
                 time: {
-                  fontSize: 10,
+                  fontSize: 12,
                   color: "#999"
                 }
               }
@@ -104,9 +105,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.card {
-  width: 500px;
-  height: 500px;
-  background-color: #fff;
+.ring {
+  width: 400px; height: 300px
 }
 </style>

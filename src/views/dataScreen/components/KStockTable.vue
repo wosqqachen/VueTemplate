@@ -6,9 +6,12 @@
     </div>
     <div class="con">
       <div class="item" v-for="(item, index) in tableData" :key="'kc' + index">
-        <div class="rank">{{ index + 1 }}</div>
-        <div class="name">{{ item.name }}</div>
-        <div class="num">{{ item.num }}</div>
+        <div class="rank">{{ item.work_card_no }}</div>
+        <div class="name">{{ item.goods_name }}</div>
+        <div class="name">{{ item.goods_code }}</div>
+        <div class="num">{{ item.plan_qu }}</div>
+        <div class="num">{{ item.out_qu }}</div>
+        <div class="num">{{ item.pending_qu }}</div>
       </div>
     </div>
   </div>
@@ -18,24 +21,13 @@
 export default {
   props: {
     title: {
-      default: "每月统计"
+      default: "库存统计"
     },
     tableHead: {
-      default: ["排行", "名称", "数量量"]
+      default: []
     },
     tableData: {
-      default: [
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          num: 99
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          num: 99
-        }
-      ]
+      default: []
     }
   },
   data() {
@@ -57,39 +49,49 @@ export default {
     background-repeat: no-repeat;
     box-sizing: border-box;
   }
-  .con {
-    height: 250px;
-  }
-  .htitle {
-    width: 863px;
+  
+  >.htitle {
+    width: 860px;
     height: 40px;
+    justify-content: space-between;
     line-height: 40px;
   }
-  .item {
-    width: 863px;
-    height: 35px;
-    background-image: url("../images/bg3-1.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    .rank {
-      position: relative;
-      &::before {
-        content: "";
-        display: inline-block;
-        vertical-align: middle;
-        width: 13px;
-        height: 8px;
-        background-image: url("../images/i1.png");
-        background-repeat: no-repeat;
-        background-position: left;
-        background-size: contain;
+  .con {
+    height: 250px;
+    .item {
+      width: 860px;
+      height: 35px;
+      padding: 0 15px 0 10px;
+      justify-content: space-between;
+      background-image: url("../images/bg3-1.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+        text-align: left;
+      .rank {
+        position: relative;
+        width: 130px;
+        &::before {
+          content: "";
+          display: inline-block;
+          vertical-align: middle;
+          width: 13px;
+          height: 8px;
+          background-image: url("../images/i1.png");
+          background-repeat: no-repeat;
+          background-position: left;
+          background-size: contain;
+        }
+      }
+      .name {
+        width: 140px;
+      }
+      .num {
+        width: 100px;
+        font-size: 16px;
       }
     }
-    .num {
-      font-size: 16px;
-      color: rgba(0, 228, 255, 1);
-    }
   }
+  
 }
 </style>

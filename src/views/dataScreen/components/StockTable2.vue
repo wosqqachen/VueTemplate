@@ -7,8 +7,8 @@
     <div class="con">
       <div class="item" v-for="(item, index) in tableData" :key="'kc' + index">
         <div class="rank">{{ index + 1 }}</div>
-        <div class="name">{{ item.name }}</div>
-        <div class="num">{{ item.num }}</div>
+        <div class="name">{{ item.goods_name }}</div>
+        <div class="num">{{ item.total_qu }}</div>
       </div>
     </div>
   </div>
@@ -18,23 +18,18 @@
 export default {
   props: {
     title: {
-      default: "每月统计"
+      default: "统计"
     },
     tableHead: {
-      default: ["排行", "名称", "数量量"]
+      default: ["排行", "名称", "数量"]
     },
     tableData: {
       default: [
         {
-          date: "2016-05-02",
-          name: "王小虎",
-          num: 99
+          "goods_name": "X8S-C-US无孔",
+          "goods_code": "JT0142CY1000",
+          "total_qu": 29978.0
         },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          num: 99
-        }
       ]
     }
   },
@@ -48,14 +43,17 @@ export default {
   width: 508px;
   height: 533px;
   background-image: url("../images/bg2.png");
+
   .con {
     height: 420px;
   }
+
   .htitle {
     width: 483px;
     height: 40px;
     line-height: 40px;
   }
+
   .item {
     width: 483px;
     height: 35px;
@@ -63,8 +61,10 @@ export default {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+
     .rank {
       position: relative;
+      width: 120px;
       &::before {
         content: "";
         display: inline-block;
@@ -77,7 +77,9 @@ export default {
         background-size: contain;
       }
     }
+
     .num {
+      width: 120px;
       font-size: 16px;
       color: rgba(0, 228, 255, 1);
     }

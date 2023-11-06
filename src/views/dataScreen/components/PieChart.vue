@@ -1,7 +1,7 @@
 <template>
   <div class="slist">
     <div class="title">{{ title }}</div>
-    <div id="chart2" class="card" style="width: 490px; height: 480px"></div>
+    <div id="chart2" class="card" style="width: 490px; height: 430px"></div>
   </div>
 </template>
 
@@ -14,7 +14,17 @@ export default {
   props: {
     title: {
       default: "动态出入"
-    }
+    },
+    accountAge:{
+      default: {
+          "a_year": 50,
+          "two_year_up": 90,
+          "three_month": 40,
+          "one_month": 40,
+          "half_a_year": 45,
+          "two_year": 70
+      }
+    },
   },
   mounted() {
     this.initChart();
@@ -24,10 +34,12 @@ export default {
       const chart = echarts.init(document.getElementById("chart2"));
       const option = {
         title: {
+          show: false,
           text: "ECharts 饼图示例"
         },
         legend: {
-          top: "bottom"
+          top: "bottom",
+          textStyle:{color:'#fff'},
         },
         toolbox: {
           show: true,
@@ -42,19 +54,20 @@ export default {
           {
             name: "Nightingale Chart",
             type: "pie",
-            radius: [50, 150],
-            center: ["50%", "50%"],
+            radius: [30, 150],
+            center: ["50%", "60%"],
             roseType: "area",
+            bottom: '25%',
             itemStyle: {
-              borderRadius: 8
+              borderRadius: 0
             },
             data: [
-              { value: 40, name: "一个月" },
-              { value: 38, name: "一季度" },
-              { value: 32, name: "半年" },
-              { value: 30, name: "一年" },
-              { value: 28, name: "两年" },
-              { value: 26, name: "两年以上" }
+              { value: this.accountAge.one_month, name: "一个月" },
+              { value: this.accountAge.three_month, name: "三个月" },
+              { value: this.accountAge.half_a_year, name: "半年" },
+              { value: this.accountAge.a_year, name: "一年" },
+              { value: this.accountAge.two_year, name: "两年" },
+              { value: this.accountAge.two_year_up, name: "两年以上" }
             ]
           }
         ]

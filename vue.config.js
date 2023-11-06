@@ -7,7 +7,7 @@ module.exports = defineConfig({
     https: false,
     proxy: {
       '/api': {//代理标识，一般是每个接口前的相同部分
-        target: 'http://192.168.1.250:86', // 这里写的是访问接口的域名和端口号
+        target: 'http://120.27.212.89:29703', // 这里写的是访问接口的域名和端口号
         changeOrigin: true, // 允许跨域请求
         secure: false,
         pathRewrite: { // 重写路径，替换请求地址中的指定路径

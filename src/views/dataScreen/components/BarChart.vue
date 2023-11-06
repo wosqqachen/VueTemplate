@@ -1,7 +1,7 @@
 <template>
   <div class="slist sk">
     <div class="title">{{ title }}</div>
-    <div id="chart" style="width: 890px; height: 300px"></div>
+    <div id="chart" style="width: 860px; height: 300px"></div>
   </div>
 </template>
 
@@ -14,7 +14,17 @@ export default {
   props: {
     title: {
       default: "动态出入"
+    },
+    xData: {
+      default: ""
+    },
+    ckData: {
+      default: ""
+    },
+    rkData: {
+      default: ""
     }
+    
   },
   mounted() {
     this.initChart();
@@ -24,36 +34,54 @@ export default {
       const chart = echarts.init(document.getElementById("chart"));
       const option = {
         title: {
+          show:false,
           text: "ECharts 示例"
         },
         tooltip: {
           trigger: "axis"
         },
         legend: {
-          data: ["收入", "支出"],
-          bottom: 15
+          show:true,
+          data: ["出库数", "入库数"],
+          textStyle:{color:'#fff'},
+          bottom: 25
         },
         xAxis: {
           type: "category",
-          data: ["9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"]
+          nameTextStyle:{color:'#fff'},
+          data: this.xData
+        },
+        grid: {
+          top: '2%',
+          left: '1%',
+          right: '1%',
+          containLabel: true
         },
         yAxis: {
-          type: "value"
+          type: "value",
+          
         },
         series: [
           {
-            name: "收入",
+            name: "出库数",
             type: "bar",
-            data: [5, 20, 36, 10, 10, 20, 10, 10, 20, 30, 90, 20]
+            barWidth:'15px',
+            itemStyle: {
+              color: 'RGBA(34, 141, 232, 1)',
+            },
+            data: this.ckData
           },
           {
-            name: "支出",
+            name: "入库数",
             type: "bar",
-            data: [15, 14, 26, 30, 20, 20, 10, 10, 20, 50, 40, 20]
+            barWidth:'15px',
+            itemStyle: {
+              color: 'RGBA(20, 216, 174, 1)',
+            },
+            data: this.rkData
           }
         ]
       };
-
       chart.setOption(option);
     }
   }

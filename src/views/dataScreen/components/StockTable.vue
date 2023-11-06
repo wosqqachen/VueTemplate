@@ -1,21 +1,26 @@
 <template>
   <div class="slist">
-    <!-- <div class="title">{{ title }}</div> -->
+    <div class="title">{{ title }}</div>
     <div class="con">
-      <!-- <div class="btitle">产品名称显示位置</div>
+      <div class="btitle">产品名称显示位置</div>
       <div class="txt">产品编码：20231020182564001</div>
-      <div class="txt">产品编码：20231020182564001</div> -->
+      <div class="txt">产品编码：20231020182564001</div>
       <div class="dcon">
         <img src="../images/d1.png" alt="" class="icon" />
         <img src="../images/d2.png" alt="" class="icon active" />
         <img src="../images/d3.png" alt="" class="icon" />
         <div class="jb"></div>
       </div>
+      <div class="chart">
+        <div class="cnum">267 <span>计划数</span></div>
+        <RingChart/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import RingChart from "./RingChart.vue";
 export default {
   props: {
     title: {
@@ -24,6 +29,9 @@ export default {
     type: {
       default: "1"
     }
+  },
+  components: {
+    RingChart
   },
   data() {
     return {};
@@ -34,15 +42,16 @@ export default {
 .slist {
   width: 508px;
   height: 622px;
-  // background-image: url("../images/bg4.png");
+  background-image: url("../images/bg4.png");
   .con {
-    height: 420px;
+    height: 570px;
+    padding: 0 20px;
   }
   .btitle {
     width: 100%;
     height: 40px;
     line-height: 40px;
-    margin: 15px auto;
+    margin: 10px auto;
     text-align: left;
     font-size: 30px;
     font-family: Source Han Sans CN;
@@ -55,15 +64,14 @@ export default {
   }
   .txt {
     position: relative;
-    height: 55px;
-    line-height: 55px;
+    height: 50px;
+    line-height: 50px;
     text-align: left;
     font-size: 18px;
     font-family: Source Han Sans CN;
     font-weight: 500;
     font-style: italic;
     color: rgba(255, 255, 255, 0.8);
-    line-height: 48px;
     background: linear-gradient(180deg, #ffffff 50%, #95d6ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -118,6 +126,27 @@ export default {
     }
     .active {
       z-index: 5;
+    }
+  }
+  .chart{
+    position: relative;
+    .cnum{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 120px;
+      transform: translate3d(-70%, -60%, 0);
+      font-size: 30px;
+      font-family: Source Han Sans CN;
+      font-weight: bold;
+      font-style: italic;
+      color: #00E4FF;
+      line-height: 25px;
+      span{
+        display: block;
+        font-size: 12px;
+        color: #fff;
+      }
     }
   }
 }

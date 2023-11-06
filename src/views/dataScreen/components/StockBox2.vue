@@ -1,9 +1,9 @@
 <template>
   <div class="sbox">
-    <img src="../images/icon1.png" alt="" srcset="" />
+    <img :src="require('../images/icon'+item.icon+'.png')" alt="" srcset="" />
     <div class="scon">
-      <div class="st">888</div>
-      <div class="sd">本月</div>
+      <div class="st">{{item.amount}}</div>
+      <div class="sd">{{item.title}}</div>
     </div>
   </div>
 </template>
@@ -11,9 +11,9 @@
 <script>
 export default {
   props: {
-    title: {
-      default: "月份"
-    }
+    item: {
+      default: ''
+    },
   },
   data() {
     return {};
@@ -30,7 +30,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background-image: url("./images/bg1.png");
+  background-image: url("../images/bg1.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;

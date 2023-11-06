@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import { wearHouseAccountAge } from "@/api/index";
+import axios from "axios";
 export default {
   name: "index",
   data() {
@@ -26,6 +28,13 @@ export default {
     }
   },
   mounted() {
+    wearHouseAccountAge().then(response => {
+      console.log("返回数据啦", response.data);
+    });
+    // axios.post('http://120.27.212.89:29703/api/pride-dxsx-mes/big_screen/wearHouseAccountAge', {
+    //   }).then(response => {
+    //     console.log(response.data)
+    //   })
     this.socketApi.createWebSocket();
   },
   created() {
