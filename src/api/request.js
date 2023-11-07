@@ -23,7 +23,7 @@ const requests = axios.create({
 let i = 0;
 // 请求拦截器 在发送请求之前，请求拦截器可以拦截，做一些事情
 requests.interceptors.request.use(config => {
-  console.log("请求拦截器", config);
+  // console.log("请求拦截器", config);
   // console.log(config.headers)
   // 进度条开始动
   // nProgress.start()
@@ -45,7 +45,7 @@ requests.interceptors.request.use(config => {
 // 响应拦截器
 requests.interceptors.response.use(
   res => {
-    console.log("响应拦截器", res.config.url);
+    // console.log("响应拦截器", res.config.url);
     i--;
     if (i == 0) loadingPro.close();
     // if (loadingPro && res.config.url.indexOf('/station/schedulingNew') == -1 && res.config.url.indexOf('/apg/scheduling') ==

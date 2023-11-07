@@ -2,9 +2,9 @@
   <div class="slist">
     <div class="title">{{ title }}</div>
     <div class="con">
-      <div class="btitle">产品名称显示位置</div>
-      <div class="txt">产品编码：20231020182564001</div>
-      <div class="txt">产品编码：20231020182564001</div>
+      <div class="btitle">{{ info.goods_name }}</div>
+      <div class="txt">产品编码：{{ info.goods_code }}</div>
+      <div class="txt">流转卡号：{{ info.work_card_no }}</div>
       <div class="dcon">
         <img src="../images/d1.png" alt="" class="icon" />
         <img src="../images/d2.png" alt="" class="icon active" />
@@ -12,8 +12,8 @@
         <div class="jb"></div>
       </div>
       <div class="chart">
-        <div class="cnum">267 <span>计划数</span></div>
-        <RingChart/>
+        <div class="cnum">{{ info.plan_qu }} <span>计划数</span></div>
+        <RingChart v-if="info.plan_qu > 0" :info="info" />
       </div>
     </div>
   </div>
@@ -28,6 +28,18 @@ export default {
     },
     type: {
       default: "1"
+    },
+    info: {
+      default: {
+        goods_name: "9R1B-A巨腾",
+        work_card_no: "WC20231028-009",
+        plan_qu: 0,
+        goods_code: "JT0344NC1000",
+        already_qu: 10.0,
+        work_card_id: "2023103012102994226900001",
+        status: 1,
+        remain_qu: 90.0
+      }
     }
   },
   components: {
@@ -128,9 +140,9 @@ export default {
       z-index: 5;
     }
   }
-  .chart{
+  .chart {
     position: relative;
-    .cnum{
+    .cnum {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -140,9 +152,9 @@ export default {
       font-family: Source Han Sans CN;
       font-weight: bold;
       font-style: italic;
-      color: #00E4FF;
+      color: #00e4ff;
       line-height: 25px;
-      span{
+      span {
         display: block;
         font-size: 12px;
         color: #fff;

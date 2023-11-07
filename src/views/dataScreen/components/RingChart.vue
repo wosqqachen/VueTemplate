@@ -1,5 +1,5 @@
 <template>
-  <div id="ring" class="ring" ></div>
+  <div id="ring" class="ring"></div>
 </template>
 
 <script>
@@ -7,25 +7,8 @@ import * as echarts from "echarts";
 require("echarts/theme/macarons"); // echarts theme
 export default {
   props: {
-    title: {
-      default: "库存统计总量"
-    },
-    tableHead: {
-      default: ["库存排行", "商品名称", "库存量"]
-    },
-    tableData: {
-      default: [
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          num: 99
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          num: 99
-        }
-      ]
+    info: {
+      default: { already_qu: 0, remain_qu: 0 }
     }
   },
   mounted() {
@@ -39,7 +22,7 @@ export default {
           text: ""
         },
         legend: {
-          show:false,
+          show: false,
           top: "bottom",
           lineStyle: { color: "#91cc75" }
         },
@@ -66,14 +49,18 @@ export default {
             },
             label: {
               alignTo: "edge",
-              formatter: "{name|{b}}\n{time|{c} 小时}",
+              formatter: "{name|{c}}\n{time|{b}}",
               minMargin: 5,
               edgeDistance: 10,
               lineHeight: 25,
               rich: {
+                name: {
+                  color: "#FCB801",
+                  fontSize: 24
+                },
                 time: {
-                  fontSize: 12,
-                  color: "#999"
+                  fontSize: 14,
+                  color: "#fff"
                 }
               }
             },
@@ -92,8 +79,8 @@ export default {
               };
             },
             data: [
-              { value: 40, name: "一个月" },
-              { value: 138, name: "一季度" }
+              { value: this.info.remain_qu, name: "剩余数" },
+              { value: this.info.already_qu, name: "已完成数" }
             ]
           }
         ]
@@ -106,6 +93,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .ring {
-  width: 400px; height: 300px
+  width: 400px;
+  height: 300px;
 }
 </style>

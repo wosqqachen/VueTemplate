@@ -15,16 +15,9 @@ export default {
     title: {
       default: "动态出入"
     },
-    accountAge:{
-      default: {
-          "a_year": 50,
-          "two_year_up": 90,
-          "three_month": 40,
-          "one_month": 40,
-          "half_a_year": 45,
-          "two_year": 70
-      }
-    },
+    accountAge: {
+      default: {}
+    }
   },
   mounted() {
     this.initChart();
@@ -39,7 +32,7 @@ export default {
         },
         legend: {
           top: "bottom",
-          textStyle:{color:'#fff'},
+          textStyle: { color: "#fff" }
         },
         toolbox: {
           show: true,
@@ -57,12 +50,35 @@ export default {
             radius: [30, 150],
             center: ["50%", "60%"],
             roseType: "area",
-            bottom: '25%',
+            bottom: "25%",
+            width: 490,
+            label: {
+              alignTo: "edge",
+              formatter: "{name|{b}}\n{time|{c} w}",
+              minMargin: 2,
+              edgeDistance: 30,
+              lineHeight: 15,
+              rich: {
+                name: {
+                  color: "#ED5948",
+                  fontSize: 12
+                },
+                time: {
+                  fontSize: 10,
+                  color: "#6ADFFE"
+                }
+              }
+            },
+            labelLine: {
+              length: 15,
+              length2: 0,
+              maxSurfaceAngle: 20
+            },
             itemStyle: {
               borderRadius: 0
             },
             data: [
-              { value: this.accountAge.one_month, name: "一个月" },
+              { value: 23, name: "一个月" },
               { value: this.accountAge.three_month, name: "三个月" },
               { value: this.accountAge.half_a_year, name: "半年" },
               { value: this.accountAge.a_year, name: "一年" },

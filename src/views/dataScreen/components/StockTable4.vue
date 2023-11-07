@@ -1,21 +1,25 @@
 <template>
   <div class="slist box9">
     <div class="title">{{ title }}</div>
-    <div class="con" v-if="type==2">
-      <div class="item" v-for="(item, index) in 3" :key="'kc' + index">
-        <img src="../images/icon8.png" alt="" class="icon">
-        <div class="name"><span>289</span>检测数量
+    <div class="con" v-if="type == 2">
+      <div class="item" v-for="(item, index) in ['检测数量', '合格数', '不合格数']" :key="'kc' + index">
+        <img :src="require('../images/icon' + (index + 8) + '.png')" alt="" class="icon" />
+        <div class="name">
+          <span>{{ tableHead[index] }}</span
+          >{{ item }}
         </div>
       </div>
     </div>
-    <div class="con con2" v-else-if="type==3">
-      <div class="item" v-for="(item, index) in 4" :key="'kc' + index">
-        <div class="name"><span>289</span>电压
+    <div class="con con2" v-else-if="type == 3">
+      <div class="item" v-for="(item, index) in ['电压', '电流', '电阻', 'OCV值']" :key="'kc' + index">
+        <div class="name">
+          <span>{{ tableHead[index] }}</span
+          >{{ item }}
         </div>
       </div>
     </div>
     <div v-else>
-      <img src="../images/bgp2.png" alt="" class="vimg">
+      <img :src="tableHead[0]" alt="" class="vimg" />
     </div>
   </div>
 </template>
@@ -27,12 +31,15 @@ export default {
       default: "物料台数据"
     },
     type: {
+      require: true,
       default: "1"
     },
     tableHead: {
+      require: false,
       default: ["排行", "名称", "数量量"]
     },
     tableData: {
+      require: false,
       default: [
         {
           date: "2016-05-02",
@@ -43,11 +50,13 @@ export default {
           date: "2016-05-04",
           name: "王小虎",
           num: 99
-        },{
+        },
+        {
           date: "2016-05-02",
           name: "王小虎",
           num: 99
-        },{
+        },
+        {
           date: "2016-05-02",
           name: "王小虎",
           num: 99
@@ -80,12 +89,12 @@ export default {
       margin: 7px auto;
       flex-flow: column nowrap;
       align-items: center;
-      .icon{
+      .icon {
         width: 32px;
         height: 32px;
         margin: 0 auto;
       }
-      .name{
+      .name {
         width: 130px;
         height: 90px;
         padding-top: 10px;
@@ -95,7 +104,7 @@ export default {
         background-repeat: no-repeat;
         background-position: bottom;
         background-size: contain;
-        span{
+        span {
           font-size: 30px;
           color: rgba(255, 255, 255, 1);
           display: block;
@@ -107,33 +116,33 @@ export default {
       }
     }
   }
-  .con2{
+  .con2 {
     height: auto;
     flex-flow: row wrap;
     .item {
       width: 175px;
       height: 110px;
       margin: 0px auto 15px;
-      .name{
-          width: 162px;
-          height: 90px;
-          padding-top: 10px;
-          padding-bottom: 40px;
-          font-size: 18px;
-          color: rgba(222, 241, 255, 1);
-          background-image: url("../images/dbg.png");
-          background-repeat: no-repeat;
-          background-position: bottom;
-          background-size: contain;
-          span{
-            font-size: 30px;
-            color: rgba(255, 255, 255, 1);
-            display: block;
-          }
+      .name {
+        width: 162px;
+        height: 90px;
+        padding-top: 10px;
+        padding-bottom: 40px;
+        font-size: 18px;
+        color: rgba(222, 241, 255, 1);
+        background-image: url("../images/dbg.png");
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: contain;
+        span {
+          font-size: 30px;
+          color: rgba(255, 255, 255, 1);
+          display: block;
         }
+      }
     }
   }
-  .vimg{
+  .vimg {
     width: 460px;
     height: 200px;
   }

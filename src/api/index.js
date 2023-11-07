@@ -68,7 +68,7 @@ export const todayInAmount = () => {
     url: "/pride-dxsx-mes/big_screen/todayInAmount"
   });
 };
-// 商品分类数
+// 商品品类数
 export const goodsTypeAmount = () => {
   return requests({
     url: "/pride-dxsx-mes/big_screen/goodsTypeAmount"
