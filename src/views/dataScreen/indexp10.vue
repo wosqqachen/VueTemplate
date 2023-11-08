@@ -19,7 +19,7 @@
         </div>
         <StockTable4 class="rtop" :type="2" title="生产数量信息" :tableHead="OkParams" />
         <StockTable4 class="rtop2" :type="3" title="OCV参数" :tableHead="OCVParams" />
-        <StockTable3 class="rtop3" title="预警信息" :tableData="alaInfo" />
+        <StockTable3 class="rtop3" title="预警信息" :tableHead="['排行', '名称', '数量']" :tableData="alaInfo" />
       </div>
     </div>
   </div>

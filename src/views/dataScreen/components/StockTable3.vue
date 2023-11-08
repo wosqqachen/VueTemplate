@@ -7,8 +7,11 @@
     <div class="con">
       <div class="item" v-for="(item, index) in tableData" :key="'kc' + index">
         <div class="rank">{{ index + 1 }}</div>
-        <div class="name">{{ item.name }}</div>
-        <div class="num">{{ item.num }}</div>
+        <div class="name" v-if="item.name">{{ item.name }}</div>
+        <div class="num" v-if="item.num">{{ item.num }}</div>
+        <div class="name" v-if="item.goods_code">{{ item.goods_code }}</div>
+        <div class="name" v-if="item.goods_name">{{ item.goods_name }}</div>
+        <div class="num" v-if="item.qu">{{ item.qu }}</div>
       </div>
     </div>
   </div>
@@ -21,7 +24,7 @@ export default {
       default: "物料台数据"
     },
     tableHead: {
-      default: ["排行", "名称", "数量量"]
+      default: ["排行", "名称", "数量"]
     },
     tableData: {
       default: [

@@ -5,10 +5,10 @@
       <div class="btitle">{{ info.goods_name }}</div>
       <div class="txt">产品编码：{{ info.goods_code }}</div>
       <div class="txt">流转卡号：{{ info.work_card_no }}</div>
-      <div class="dcon">
-        <img src="../images/d1.png" alt="" class="icon" />
-        <img src="../images/d2.png" alt="" class="icon active" />
-        <img src="../images/d3.png" alt="" class="icon" />
+      <div :class="`dcon ${['', 'green', 'yellow', 'red'][info.status]}`">
+        <img src="../images/d1.png" alt="" :class="info.status == 3 ? 'icon active' : 'icon'" />
+        <img src="../images/d2.png" alt="" :class="info.status == 2 ? 'icon active' : 'icon'" />
+        <img src="../images/d3.png" alt="" :class="info.status == 1 ? 'icon active' : 'icon'" />
         <div class="jb"></div>
       </div>
       <div class="chart">
@@ -124,20 +124,27 @@ export default {
       height: 0px;
       box-shadow: 17px 38px 22px 20px rgba(246, 199, 56, 0.65);
     }
-    .red {
-      border: 2px solid rgba(246, 199, 56, 0.5);
-      .jb {
-        box-shadow: 17px 38px 22px 20px rgba(246, 199, 56, 0.65);
-      }
-    }
-    .green {
-      box-shadow: 17px 38px 22px 20px rgba(246, 199, 56, 0.65);
-    }
-    .yellow {
-      box-shadow: 17px 38px 22px 20px rgba(246, 199, 56, 0.65);
-    }
     .active {
       z-index: 5;
+    }
+  }
+  .red {
+    border: 2px solid rgba(246, 78, 56, 0.5);
+    .jb {
+      box-shadow: 17px 38px 22px 20px rgba(246, 116, 56, 0.65);
+    }
+  }
+
+  .green {
+    border: 2px solid rgba(13, 247, 130, 0.5);
+    .jb {
+      box-shadow: 17px 38px 22px 20px rgba(33, 241, 60, 0.65);
+    }
+  }
+  .yellow {
+    border: 2px solid rgba(246, 199, 56, 0.5);
+    .jb {
+      box-shadow: 17px 38px 22px 20px rgba(246, 199, 56, 0.65);
     }
   }
   .chart {

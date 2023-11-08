@@ -4,36 +4,49 @@
       <div class="dataScreen-header">
         <div class="header-ct">
           <div class="header-ct-title">
-            <span>OP60大屏
-            </span>
+            <span>OP60大屏 </span>
           </div>
         </div>
       </div>
       <div class="dataScreen-main">
         <div class="d-lf">
-          <StockTable/>
-          <StockTable3/>
+          <StockTable title="正在加工产品" :info="makeInfo" />
+          <StockTable3
+            title="物料台数据"
+            :tableHead="['排行', '物料编码', '物料名称', '数量']"
+            :tableData="goodsInfo"
+          />
         </div>
         <div class="d-rf">
-          <StockBox3/>
-          <StockBox :type="2"/>
+          <StockBox3 />
+          <StockBox :type="2" />
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script> 
+<script>
 import StockTable from "./components/StockTable.vue";
 import StockTable3 from "./components/StockTable3.vue";
 import StockBox3 from "./components/StockBox3.vue";
 import StockBox from "./components/StockBox.vue";
-
+import { goodsTableInfo, currentMakeGoods } from "@/api/index";
 export default {
-  name: "index",
   data() {
     return {
       data: "",
+      makeInfo: {
+        goods_name: "9R1B-A巨腾",
+        work_card_no: "WC20231028-009",
+        plan_qu: 100.0,
+        goods_code: "JT0344NC1000",
+        already_qu: 10.0,
+        work_card_id: "2023103012102994226900001",
+        status: 3,
+        remain_qu: 90.0
+      },
+      goodsInfo: "",
       visible: false
     };
   },
@@ -41,16 +54,18 @@ export default {
     StockTable,
     StockBox3,
     StockTable3,
-    StockBox,
+    StockBox
   },
   methods: {
-    // 获取socket信息回调
-    getConfigResult(res) {
-      // 获取websocket发来的信息
-      console.log(res.data);
-    },
-    sendSocket() {
-      this.socketApi.sendSock(data, callBack);
+    allData() {
+      goodsTableInfo(this.work_position_id).then(response => {
+        console.log("物料台数据", response.data);
+        this.goodsInfo = response.data;
+      });
+      currentMakeGoods(this.work_position_id).then(response => {
+        console.log("正在加工产品", response.data);
+        this.makeInfo = response.data;
+      });
     },
     getScale(width = 1920, height = 1080) {
       let ww = window.innerWidth / width;
@@ -79,7 +94,7 @@ export default {
     // 初始化 echarts
     // 为浏览器绑定事件
     window.addEventListener("resize", this.resize);
-    initCharts();
+    this.allData();
   },
   created() {
     this.socketApi.getSock(this.getConfigResult);
@@ -95,79 +110,79 @@ export default {
   background: url("./images/bgp2.png") no-repeat;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  >.dataScreen-main {
+  > .dataScreen-main {
+    justify-content: space-between;
+    .d-lf {
+      display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      .d-lf {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 510px;
-        height: 100%;
-        margin-right: 0px;
-        padding-bottom: 20px;
-        box-sizing: border-box;
-      }
-      .d-rf{
-        flex: 1;
-        position: relative;
-        >:nth-child(1){
+      width: 510px;
+      height: 100%;
+      margin-right: 0px;
+      padding-bottom: 20px;
+      box-sizing: border-box;
+    }
+    .d-rf {
+      flex: 1;
+      position: relative;
+      > :nth-child(1) {
+        position: absolute;
+        left: 320px;
+        top: 99px;
+        &::after {
+          content: "";
+          display: inline-block;
+          vertical-align: sub;
           position: absolute;
-          left: 320px;
-          top: 99px;
-          &::after {
-          content: '';
-            display: inline-block;
-            vertical-align: sub;
-            position: absolute;
-            top: 90%;
-            left: 40%;
-            width: 201px;
-            height: 101px;
-            background: url("./images/xr.png") no-repeat;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-          }
-        }
-        >:nth-child(2){
-          position: absolute;
-          left: 130px;
-          bottom: 390px;
-          &::after {
-          content: '';
-            display: inline-block;
-            vertical-align: sub;
-            position: absolute;
-            top: 90%;
-            left: -10%; 
-            width: 201px;
-            height: 101px;
-            background: url("./images/xl.png") no-repeat;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-          }
-        }
-        >:nth-child(3){
-          position: absolute;
-          right: 170px;
-          top: 300px;
-          &::after {
-          content: '';
-            display: inline-block;
-            vertical-align: sub;
-            position: absolute;
-            top: 90%;
-            left: -10%;
-            width: 201px;
-            height: 101px;
-            background: url("./images/xl.png") no-repeat;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-          }
+          top: 90%;
+          left: 40%;
+          width: 201px;
+          height: 101px;
+          background: url("./images/xr.png") no-repeat;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
         }
       }
+      > :nth-child(2) {
+        position: absolute;
+        left: 130px;
+        bottom: 390px;
+        &::after {
+          content: "";
+          display: inline-block;
+          vertical-align: sub;
+          position: absolute;
+          top: 90%;
+          left: -10%;
+          width: 201px;
+          height: 101px;
+          background: url("./images/xl.png") no-repeat;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+        }
+      }
+      > :nth-child(3) {
+        position: absolute;
+        right: 170px;
+        top: 300px;
+        &::after {
+          content: "";
+          display: inline-block;
+          vertical-align: sub;
+          position: absolute;
+          top: 90%;
+          left: -10%;
+          width: 201px;
+          height: 101px;
+          background: url("./images/xl.png") no-repeat;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+        }
+      }
+    }
   }
 }
 </style>
