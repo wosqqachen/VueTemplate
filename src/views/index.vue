@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button @click="visible = true">Button</el-button>
+    <el-button @click="visible = true">Button{{ goodsAmount }}</el-button>
     <el-dialog :visible.sync="visible" title="Hello world">
       <p>Try Element</p>
     </el-dialog>
@@ -9,37 +9,28 @@
 
 <script>
 import { wearHouseAccountAge } from "@/api/index";
-import axios from "axios";
+import requests from "@/api/request";
 export default {
-  name: "index",
   data() {
     return {
-      visible: false
+      visible: false,
+      goodsAmount: 0
     };
   },
-  methods: {
-    // 获取socket信息回调
-    getConfigResult(res) {
-      // 获取websocket发来的信息
-      console.log(res.data);
-    },
-    sendSocket() {
-      this.socketApi.sendSock(data, callBack);
-    }
-  },
+  methods: {},
   mounted() {
     wearHouseAccountAge().then(response => {
       console.log("返回数据啦", response.data);
     });
-    // axios.post('http://120.27.212.89:29703/api/pride-dxsx-mes/big_screen/wearHouseAccountAge', {
-    //   }).then(response => {
-    //     console.log(response.data)
-    //   })
-    this.socketApi.createWebSocket();
+    // requests({
+    //   // url: "/Admin/GoodsProp/getenum"
+    //   url: "/Admin/GoodsPrice/getenum"
+    // }).then(response => {
+    //   console.log("返回数据啦", response.data);
+    //   this.goodsAmount = response.data;
+    // });
   },
-  created() {
-    this.socketApi.getSock(this.getConfigResult);
-  }
+  created() {}
 };
 </script>
 

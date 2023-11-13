@@ -1,7 +1,6 @@
 // 对于axios进行二次封装
 import { Loading, Message } from "element-ui";
 import axios from "axios";
-import Cookies from "js-cookie";
 import router from "@/router";
 // 利用axios的create方法创建实例
 // 这里的request 就是axios 只不过再配置一下

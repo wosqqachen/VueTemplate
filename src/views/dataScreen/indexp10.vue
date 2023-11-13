@@ -74,6 +74,7 @@ export default {
       alarmsInfo(this.work_position_id).then(response => {
         console.log("预警信息", response.data);
         this.alaInfo = response.data;
+        
       });
       visualPhoto(this.work_position_id).then(response => {
         console.log("视觉拍照", response.data);

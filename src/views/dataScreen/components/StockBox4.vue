@@ -61,6 +61,7 @@ export default {
     allData() {
       goodsAmount().then(response => {
         console.log("商品总数量", response.data);
+
         let info = this.stockList[0];
         info.amount = response.data.amount;
         this.stockList.splice(0, 1, info);
