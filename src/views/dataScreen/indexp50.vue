@@ -28,22 +28,11 @@ import StockTable from "./components/StockTable.vue";
 import StockTable4 from "./components/StockTable4.vue";
 import StockBox3 from "./components/StockBox3.vue";
 import StockBox from "./components/StockBox.vue";
-import { visualPhoto, currentMakeGoods } from "@/api/index";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
-      data: "",
-      picUrl: "",
-      makeInfo: {
-        goods_name: "9R1B-A巨腾",
-        work_card_no: "WC20231028-009",
-        plan_qu: 100.0,
-        goods_code: "JT0344NC1000",
-        already_qu: 10.0,
-        work_card_id: "2023103012102994226900001",
-        status: 3,
-        remain_qu: 90.0
-      },
+      work_position_id: "2023070415153194225200001",
       visible: false
     };
   },
@@ -53,17 +42,10 @@ export default {
     StockTable4,
     StockBox
   },
+  computed: {
+    ...mapState(["makeInfo", "picUrl"])
+  },
   methods: {
-    allData() {
-      currentMakeGoods(this.work_position_id).then(response => {
-        console.log("正在加工产品", response.data);
-        this.makeInfo = response.data;
-      });
-      visualPhoto(this.work_position_id).then(response => {
-        console.log("视觉拍照", response.data);
-        this.picUrl = response.data.url;
-      });
-    },
     getScale(width = 1920, height = 1080) {
       let ww = window.innerWidth / width;
       let wh = window.innerHeight / height;
@@ -91,10 +73,9 @@ export default {
     // 初始化 echarts
     // 为浏览器绑定事件
     window.addEventListener("resize", this.resize);
-    this.allData();
   },
   created() {
-    this.socketApi.getSock(this.getConfigResult);
+    this.$store.dispatch("getBig50Data", this.work_position_id);
   }
 };
 </script>

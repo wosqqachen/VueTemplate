@@ -31,16 +31,11 @@ import StockTable3 from "./components/StockTable3.vue";
 import StockBox3 from "./components/StockBox3.vue";
 import StockTable4 from "./components/StockTable4.vue";
 import StockBox from "./components/StockBox.vue";
-import { makeQuInfo, OCVParams, alarmsInfo, visualPhoto, currentMakeGoods } from "@/api/index";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
       work_position_id: "2023070415153194225200001",
-      picUrl: "",
-      makeInfo: "",
-      alaInfo: [],
-      OkParams: [0, 0, 0],
-      OCVParams: [0, 0, 0, 0],
       visible: false
     };
   },
@@ -51,39 +46,14 @@ export default {
     StockTable4,
     StockBox
   },
+  computed: {
+    ...mapState(["alaInfo", "OkParams", "OCVParams", "makeInfo", "picUrl"])
+  },
   methods: {
     getScale(width = 1920, height = 1080) {
       let ww = window.innerWidth / width;
       let wh = window.innerHeight / height;
       return ww < wh ? ww : wh;
-    },
-    allData() {
-      makeQuInfo(this.work_position_id).then(response => {
-        console.log("生产数量信息", response.data);
-        this.OkParams.splice(0, 1, response.data.checked_qu);
-        this.OkParams.splice(1, 1, response.data.ok_qu);
-        this.OkParams.splice(2, 1, response.data.bad_qu);
-      });
-      OCVParams(this.work_position_id).then(response => {
-        console.log("OCV参数", response.data);
-        this.OCVParams.splice(0, 1, response.data.voltage);
-        this.OCVParams.splice(1, 1, response.data.current);
-        this.OCVParams.splice(2, 1, response.data.resistance);
-        this.OCVParams.splice(3, 1, response.data.ovc);
-      });
-      alarmsInfo(this.work_position_id).then(response => {
-        console.log("预警信息", response.data);
-        this.alaInfo = response.data;
-        
-      });
-      visualPhoto(this.work_position_id).then(response => {
-        console.log("视觉拍照", response.data);
-        this.picUrl = response.data.url;
-      });
-      currentMakeGoods(this.work_position_id).then(response => {
-        console.log("正在加工产品", response.data);
-        this.makeInfo = response.data;
-      });
     },
     // 监听浏览器 resize 事件
     resize() {
@@ -109,7 +79,7 @@ export default {
     window.addEventListener("resize", this.resize);
   },
   created() {
-    this.allData();
+    this.$store.dispatch("getBig10Data", this.work_position_id);
   }
 };
 </script>

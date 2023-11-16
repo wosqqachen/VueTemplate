@@ -30,15 +30,17 @@ export default {
       default: "1"
     },
     info: {
-      default: {
-        goods_name: "9R1B-A巨腾",
-        work_card_no: "WC20231028-009",
-        plan_qu: 0,
-        goods_code: "JT0344NC1000",
-        already_qu: 10.0,
-        work_card_id: "2023103012102994226900001",
-        status: 1,
-        remain_qu: 90.0
+      default: () => {
+        return {
+          goods_name: "9R1B-A巨腾",
+          work_card_no: "WC20231028-009",
+          plan_qu: 0,
+          goods_code: "JT0344NC1000",
+          already_qu: 10.0,
+          work_card_id: "2023103012102994226900001",
+          status: 1,
+          remain_qu: 90.0
+        };
       }
     }
   },

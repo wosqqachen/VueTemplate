@@ -24,31 +24,35 @@ export default {
       default: "物料台数据"
     },
     tableHead: {
-      default: ["排行", "名称", "数量"]
+      default: () => {
+        return ["排行", "名称", "数量"];
+      }
     },
     tableData: {
-      default: [
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          num: 99
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          num: 99
-        },
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          num: 99
-        },
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          num: 99
-        }
-      ]
+      default: () => {
+        return [
+          {
+            date: "2016-05-02",
+            name: "王小虎",
+            num: 99
+          },
+          {
+            date: "2016-05-04",
+            name: "王小虎",
+            num: 99
+          },
+          {
+            date: "2016-05-02",
+            name: "王小虎",
+            num: 99
+          },
+          {
+            date: "2016-05-02",
+            name: "王小虎",
+            num: 99
+          }
+        ];
+      }
     }
   },
   data() {

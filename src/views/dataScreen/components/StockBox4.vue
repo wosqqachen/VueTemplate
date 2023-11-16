@@ -85,9 +85,9 @@ export default {
         this.stockList.splice(3, 1, info);
       });
       todayOutAmount().then(response => {
-        console.log("今日出库数", response.data);
+        console.log("今日出库数", response);
         let info = this.stockList[4];
-        info.amount = response.data.amount;
+        info.amount = response.data?.amount || 0;
         this.stockList.splice(4, 1, info);
       });
       voidPositionHouseAmount().then(response => {

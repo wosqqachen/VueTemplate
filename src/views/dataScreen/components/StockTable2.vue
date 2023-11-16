@@ -21,16 +21,20 @@ export default {
       default: "统计"
     },
     tableHead: {
-      default: ["排行", "名称", "数量"]
+      default: () => {
+        return ["排行", "名称", "数量"];
+      }
     },
     tableData: {
-      default: [
-        {
-          "goods_name": "X8S-C-US无孔",
-          "goods_code": "JT0142CY1000",
-          "total_qu": 29978.0
-        },
-      ]
+      default: () => {
+        return [
+          {
+            goods_name: "X8S-C-US无孔",
+            goods_code: "JT0142CY1000",
+            total_qu: 29978.0
+          }
+        ];
+      }
     }
   },
   data() {

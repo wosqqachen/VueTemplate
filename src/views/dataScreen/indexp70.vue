@@ -4,39 +4,47 @@
       <div class="dataScreen-header">
         <div class="header-ct">
           <div class="header-ct-title">
-            <span>OP70大屏
-            </span>
+            <span>OP70大屏 </span>
           </div>
         </div>
       </div>
       <div class="dataScreen-main">
         <div class="d-lf">
-          <StockTable/>
-          <StockTable3/>
+          <StockTable title="正在加工产品" :info="makeInfo" />
+          <StockTable3 />
         </div>
         <div class="d-rf">
-          <StockBox3/>
-          <StockBox/>
-          <StockBox3/>
+          <StockBox3 />
+          <StockBox />
+          <StockBox3 />
         </div>
-        <StockTable3 class="rtop"/>
-        <StockTable3 class="rtop2"/>
+        <StockTable3
+          class="rtop"
+          title="预警信息"
+          :tableHead="['时间', '工位', '数量', '关闭时间']"
+          :tableData="alaInfo"
+        />
+        <StockTable3
+          class="rtop2"
+          title="物料台数据"
+          :tableHead="['排行', '物料编码', '物料名称', '数量', '状态']"
+          :tableData="goodsInfo"
+        />
       </div>
     </div>
   </div>
 </template>
 
-<script> 
+<script>
 import StockTable from "./components/StockTable.vue";
 import StockTable3 from "./components/StockTable3.vue";
 import StockBox3 from "./components/StockBox3.vue";
 import StockBox from "./components/StockBox.vue";
-
+import { mapState } from "vuex";
 export default {
-  name: "index",
   data() {
     return {
-      data: "",
+      work_position_id: "2023070415153194225200001",
       visible: false
     };
   },
@@ -44,17 +52,12 @@ export default {
     StockTable,
     StockBox3,
     StockTable3,
-    StockBox,
+    StockBox
+  },
+  computed: {
+    ...mapState(["makeInfo", "goodsInfo", "alaInfo"])
   },
   methods: {
-    // 获取socket信息回调
-    getConfigResult(res) {
-      // 获取websocket发来的信息
-      console.log(res.data);
-    },
-    sendSocket() {
-      this.socketApi.sendSock(data, callBack);
-    },
     getScale(width = 1920, height = 1080) {
       let ww = window.innerWidth / width;
       let wh = window.innerHeight / height;
@@ -82,10 +85,9 @@ export default {
     // 初始化 echarts
     // 为浏览器绑定事件
     window.addEventListener("resize", this.resize);
-    initCharts();
   },
   created() {
-    this.socketApi.getSock(this.getConfigResult);
+    this.$store.dispatch("getBig70Data", this.work_position_id);
   }
 };
 </script>
@@ -98,91 +100,91 @@ export default {
   background: url("./images/bgp2.png") no-repeat;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  >.dataScreen-main {
+  > .dataScreen-main {
     position: relative;
+    justify-content: space-between;
+    .d-lf {
+      display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      .d-lf {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 510px;
-        height: 100%;
-        margin-right: 0px;
-        padding-bottom: 20px;
-        box-sizing: border-box;
-      }
-      .d-rf{
-        flex: 1;
-        position: relative;
-        >:nth-child(1){
-          position: absolute;
-          left: 320px;
-          top: 99px;
-          &::after {
-          content: '';
-            display: inline-block;
-            vertical-align: sub;
-            position: absolute;
-            top: 90%;
-            left: 40%;
-            width: 201px;
-            height: 101px;
-            background: url("./images/xr.png") no-repeat;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-          }
-        }
-        >:nth-child(2){
-          position: absolute;
-          left: 180px;
-          bottom: 330px;
-          &::after {
-          content: '';
-            display: inline-block;
-            vertical-align: sub;
-            position: absolute;
-            top: 90%;
-            left: -10%; 
-            width: 201px;
-            height: 101px;
-            background: url("./images/xl.png") no-repeat;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-          }
-        }
-        >:nth-child(3){
-          position: absolute;
-          left: 450px;
-          top: 340px;
-          &::after {
-          content: '';
-            display: inline-block;
-            vertical-align: sub;
-            position: absolute;
-            top: 90%;
-            left: 50%;
-            width: 201px;
-            height: 101px;
-            background: url("./images/xr.png") no-repeat;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-          }
-        }
-      }
-      
-      .rtop{
-          position: absolute;
-          right: 40px;
-          top: 10px;
-        }
-      .rtop2{
+      width: 510px;
+      height: 100%;
+      margin-right: 0px;
+      padding-bottom: 20px;
+      box-sizing: border-box;
+    }
+    .d-rf {
+      flex: 1;
+      position: relative;
+      > :nth-child(1) {
         position: absolute;
-        right: 40px;
-        top: 310px;
+        left: 320px;
+        top: 99px;
+        &::after {
+          content: "";
+          display: inline-block;
+          vertical-align: sub;
+          position: absolute;
+          top: 90%;
+          left: 40%;
+          width: 201px;
+          height: 101px;
+          background: url("./images/xr.png") no-repeat;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+        }
       }
+      > :nth-child(2) {
+        position: absolute;
+        left: 180px;
+        bottom: 330px;
+        &::after {
+          content: "";
+          display: inline-block;
+          vertical-align: sub;
+          position: absolute;
+          top: 90%;
+          left: -10%;
+          width: 201px;
+          height: 101px;
+          background: url("./images/xl.png") no-repeat;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+        }
+      }
+      > :nth-child(3) {
+        position: absolute;
+        left: 450px;
+        top: 340px;
+        &::after {
+          content: "";
+          display: inline-block;
+          vertical-align: sub;
+          position: absolute;
+          top: 90%;
+          left: 50%;
+          width: 201px;
+          height: 101px;
+          background: url("./images/xr.png") no-repeat;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+        }
+      }
+    }
+
+    .rtop {
+      position: absolute;
+      right: 40px;
+      top: 10px;
+    }
+    .rtop2 {
+      position: absolute;
+      right: 40px;
+      top: 310px;
+    }
   }
 }
 </style>
