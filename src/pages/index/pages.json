@@ -1,0 +1,51 @@
+[
+  {
+    "path": "button",
+    "title": "按钮",
+    "num":5
+  },{
+    "path": "rank/top3",
+    "title": "榜单top3",
+    "num":5
+  },{
+    "path": "rank/item",
+    "title": "榜单item",
+    "num":5
+  },{
+    "path": "rank/self",
+    "title": "榜单self",
+    "num":5
+  },{
+    "path": "tab",
+    "title": "tab切换",
+    "num":5
+  },{
+    "path": "table",
+    "title": "表格",
+    "num":5
+  },{
+    "path": "barrage",
+    "title": "弹幕",
+    "num":5
+  },{
+    "path": "box",
+    "title": "盒子",
+    "num":5
+  },{
+    "path": "date",
+    "title": "日期相关",
+    "num":5
+  },{
+    "path": "list",
+    "title": "列表",
+    "num":5
+  },{
+    "path": "stretch",
+    "title": "收缩",
+    "num":5
+  },{
+    "path": "input",
+    "title": "输入框",
+    "num":5
+  }
+]
