@@ -25,7 +25,7 @@
     "num":5
   },{
     "path": "barrage",
-    "title": "弹幕",
+    "title": "弹幕/飘雪/气球升空",
     "num":5
   },{
     "path": "box",
@@ -37,15 +37,19 @@
     "num":5
   },{
     "path": "list",
-    "title": "列表",
+    "title": "滚动列表",
     "num":5
   },{
     "path": "stretch",
-    "title": "收缩",
+    "title": "收起/展开",
     "num":5
   },{
     "path": "input",
     "title": "输入框",
+    "num":5
+  },{
+    "path": "progress",
+    "title": "进度条",
     "num":5
   }
 ]

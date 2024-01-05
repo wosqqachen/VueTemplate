@@ -4,7 +4,7 @@
       <tr>
         <th>序号</th>
         <th>组件名称</th>
-        <th>组件数量</th>
+        <th>组件描述</th>
       </tr>
       <template v-for="(page, index) in pages" :key="page.path">
         <tr>
@@ -17,12 +17,12 @@
             <a
               :href="`./pageList.html?p=${page.path}&n=${page.num}`"
               title="打开"
-              >{{ page.title }}</a
+              >{{ page.path }}</a
             >
           </td>
           <td>
             <span @click="handleCopy(page.path, page.title)" title="复制">{{
-              page.path
+              page.title
             }}</span>
           </td>
         </tr>

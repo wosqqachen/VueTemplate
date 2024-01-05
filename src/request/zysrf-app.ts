@@ -6,7 +6,12 @@
  */
 const ua = window.navigator.userAgent;
 const isIos = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); // IOS终端
-
+export interface IApiRes {
+  code: number
+  message?: string
+  msg?: string
+  data: any
+}
 /**
  * 生成随机字符串
  * @param {*} len
@@ -188,5 +193,6 @@ const api = {
 };
 
 api.initial();
-
 export default api;
+ 
+
