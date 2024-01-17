@@ -42,7 +42,6 @@ const props = defineProps<IProps>();
   height: auto;
   text-align: center;
   box-sizing: border-box;
-  background: #2b8f61;
 }
 .li {
   width: 6.48rem;

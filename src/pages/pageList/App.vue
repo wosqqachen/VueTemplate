@@ -1,15 +1,18 @@
 <template>
   <div class="page">
-    <!-- <pageRule @goBack="gotoBack" v-if="half == 1"> </pageRule>
-    <div class="page1" v-else>
-    </div> -->
-    <component :is="item" v-for="(item, i) in arrBox" :key="i" class="comm" />
+    <div
+      class="comm"
+      v-for="(item, i) in arrBox"
+      @dblclick="gotoCom(i)"
+      :key="pageName + i"
+    >
+      <component :is="item" />
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
 import { ref, defineAsyncComponent } from "vue";
 import { getParam } from "@/utils/util";
-import { goBack } from "@/request/client-request";
 //访问链接 https://m.tataxingqiu.com/txqfe/mass/pageList.html?p=pet&hidenavbar=1
 
 const pageName = getParam()["p"] || "button/box1";
@@ -30,14 +33,9 @@ for (let index = 1; index <= half; index++) {
     arrBox.value.push(box);
   }
 }
-const pageRule = defineAsyncComponent(() =>
-  import(`@/pages/${pageName}/index.vue`)
-);
-const gotoBack = () => {
-  goBack();
-};
 const gotoCom = (b: number) => {
-  window.location.href = window.location.href.split("&")[0];
+  console.log("first");
+  window.location.href = window.location.href.split("&")[0] + "/box" + (b + 1);
 };
 </script>
 

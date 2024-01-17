@@ -1,6 +1,6 @@
 <template>
   <div class="ul">
-    <div class="li" v-for="(item, index) in 3" :key="'it' + index">
+    <div class="li" v-for="(item, index) in 1" :key="'it' + index">
       <div class="num">{{ index + 4 }}</div>
       <div class="user_box">
         <div class="user">
@@ -91,7 +91,6 @@ const props = defineProps<IProps>();
   height: auto;
   width: 7.5rem;
   padding: 0 0.3rem;
-  background-color: RGBA(36, 44, 83, 1);
   box-sizing: border-box;
 }
 .li {
